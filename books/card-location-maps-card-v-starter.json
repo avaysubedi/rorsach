@@ -1,0 +1,178 @@
+{
+  "V": {
+    "image": "assets/cards/card-v.png",
+    "viewBox": "0 0 1000 1000",
+    "spatialStatus": "starter",
+    "source": "Starter map from Figure A.5 + Card V photo; verify before clinical use.",
+    "regions": [
+      {
+        "code": "W",
+        "type": "W",
+        "label": "Whole blot",
+        "shape": "polygon",
+        "points": "218,500 302,420 429,400 479,340 500,320 521,340 571,400 698,420 782,500 726,560 556,580 514,640 486,640 444,580 274,560",
+        "description": "Whole blot"
+      },
+      {
+        "code": "D1",
+        "type": "D",
+        "label": "D1",
+        "shape": "polygon",
+        "points": "698,440 797,480 782,560 684,540",
+        "description": "Right wing-tip common detail"
+      },
+      {
+        "code": "D4",
+        "type": "D",
+        "label": "D4",
+        "shape": "polygon",
+        "points": "203,440 429,400 444,560 232,560",
+        "description": "Left wing common detail"
+      },
+      {
+        "code": "D6",
+        "type": "D",
+        "label": "D6",
+        "shape": "polygon",
+        "points": "458,320 542,320 542,420 458,420",
+        "description": "Upper projections / “ears”"
+      },
+      {
+        "code": "D7",
+        "type": "D",
+        "label": "D7",
+        "shape": "polygon",
+        "points": "479,400 521,400 521,620 479,620",
+        "description": "Central vertical body"
+      },
+      {
+        "code": "D9",
+        "type": "D",
+        "label": "D9",
+        "shape": "polygon",
+        "points": "472,540 528,540 528,640 472,640",
+        "description": "Lower central legs"
+      },
+      {
+        "code": "D10",
+        "type": "D",
+        "label": "D10",
+        "shape": "polygon",
+        "points": "726,460 811,500 782,560 712,540",
+        "description": "Far right wing-tip common detail"
+      },
+      {
+        "code": "Dd22",
+        "type": "Dd",
+        "label": "Dd22",
+        "shape": "polygon",
+        "points": "274,460 345,460 345,540 274,540",
+        "description": "Left mid-wing unusual detail"
+      },
+      {
+        "code": "Dd23",
+        "type": "Dd",
+        "label": "Dd23",
+        "shape": "polygon",
+        "points": "585,500 698,500 698,580 585,580",
+        "description": "Right lower-wing unusual detail"
+      },
+      {
+        "code": "Dd24",
+        "type": "Dd",
+        "label": "Dd24",
+        "shape": "polygon",
+        "points": "486,380 528,380 528,440 486,440",
+        "description": "Upper-center small unusual detail"
+      },
+      {
+        "code": "Dd25",
+        "type": "Dd",
+        "label": "Dd25",
+        "shape": "polygon",
+        "points": "429,500 472,500 472,560 429,560",
+        "description": "Lower-left inner unusual detail"
+      },
+      {
+        "code": "Dd26",
+        "type": "Dd",
+        "label": "Dd26",
+        "shape": "polygon",
+        "points": "655,460 726,460 726,540 655,540",
+        "description": "Right mid-wing unusual detail"
+      },
+      {
+        "code": "Dd30",
+        "type": "Dd",
+        "label": "Dd30",
+        "shape": "polygon",
+        "points": "479,340 521,340 521,400 479,400",
+        "description": "Upper-center between projections"
+      },
+      {
+        "code": "Dd31",
+        "type": "Dd",
+        "label": "Dd31",
+        "shape": "polygon",
+        "points": "486,310 514,310 514,360 486,360",
+        "description": "Top-center small unusual detail"
+      },
+      {
+        "code": "Dd32",
+        "type": "Dd",
+        "label": "Dd32",
+        "shape": "polygon",
+        "points": "486,460 514,460 514,540 486,540",
+        "description": "Lower-center inner unusual detail"
+      },
+      {
+        "code": "Dd33",
+        "type": "Dd",
+        "label": "Dd33",
+        "shape": "polygon",
+        "points": "528,360 585,360 585,420 528,420",
+        "description": "Upper-right inner unusual detail"
+      },
+      {
+        "code": "Dd34",
+        "type": "Dd",
+        "label": "Dd34",
+        "shape": "polygon",
+        "points": "415,360 472,360 472,420 415,420",
+        "description": "Upper-left inner unusual detail"
+      },
+      {
+        "code": "Dd35",
+        "type": "Dd",
+        "label": "Dd35",
+        "shape": "polygon",
+        "points": "302,400 387,400 387,480 302,480",
+        "description": "Left upper-wing unusual detail"
+      },
+      {
+        "code": "DdS27",
+        "type": "DdS",
+        "label": "DdS27",
+        "shape": "polygon",
+        "points": "479,560 521,560 521,640 479,640",
+        "description": "Lower-center white/edge space"
+      },
+      {
+        "code": "DdS28",
+        "type": "DdS",
+        "label": "DdS28",
+        "shape": "polygon",
+        "points": "472,360 528,360 528,460 472,460",
+        "description": "Upper inner white space"
+      },
+      {
+        "code": "DdS29",
+        "type": "DdS",
+        "label": "DdS29",
+        "shape": "polygon",
+        "points": "203,500 260,500 260,560 203,560",
+        "description": "Left outer white-edge detail"
+      }
+    ]
+  }
+}

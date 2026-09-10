@@ -1,0 +1,7 @@
+{
+  "locations": "manual-required",
+  "formQuality": "manual-required",
+  "populars": "manual-required",
+  "specialScores": "manual-required",
+  "structuralSummary": "partial"
+}

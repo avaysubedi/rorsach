@@ -1,0 +1,459 @@
+<mat-toolbar class="app-toolbar">
+  <span>Rorschach CS Coding Assistant</span>
+  <span class="toolbar-spacer"></span>
+  <button mat-icon-button type="button" matTooltip="Save draft" (click)="saveToLocalStorage()">
+    <mat-icon>save</mat-icon>
+  </button>
+  <button mat-icon-button type="button" matTooltip="Load draft" (click)="loadFromLocalStorage()">
+    <mat-icon>folder_open</mat-icon>
+  </button>
+  <button mat-icon-button type="button" matTooltip="Export JSON" (click)="exportJson()">
+    <mat-icon>data_object</mat-icon>
+  </button>
+  <button mat-icon-button type="button" matTooltip="Export CSV" (click)="exportCsv()">
+    <mat-icon>download</mat-icon>
+  </button>
+</mat-toolbar>
+
+<main class="page-shell">
+  <section class="notice">
+    <mat-icon>verified_user</mat-icon>
+    <div>
+      <strong>Reference data required. Manual examiner judgment needed.</strong>
+      This prototype stores entered coding only. It does not auto-code Location Number, Form Quality, Popular, GHR/PHR, special scores, or clinical interpretation.
+    </div>
+  </section>
+
+  <section class="workspace">
+    <div class="form-stack">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Protocol Metadata</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form class="grid-form" [formGroup]="metadataForm">
+            <mat-form-field appearance="outline">
+              <mat-label>Examinee Code</mat-label>
+              <input matInput formControlName="examineeCode">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Age</mat-label>
+              <input matInput type="number" formControlName="age">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Gender</mat-label>
+              <input matInput formControlName="gender">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Date</mat-label>
+              <input matInput type="date" formControlName="date">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Examiner</mat-label>
+              <input matInput formControlName="examiner">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="span-2">
+              <mat-label>Notes</mat-label>
+              <textarea matInput rows="3" formControlName="notes"></textarea>
+            </mat-form-field>
+          </form>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Response Input</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form class="grid-form" [formGroup]="responseForm">
+            <mat-form-field appearance="outline">
+              <mat-label>Card Number</mat-label>
+              <mat-select formControlName="cardNumber">
+                @for (card of options.cards; track card.value) {
+                  <mat-option [value]="card.value">{{ card.label }}</mat-option>
+                }
+              </mat-select>
+              @if (hasError('cardNumber', 'required')) {
+                <mat-error>Card Number is required.</mat-error>
+              }
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Response Number</mat-label>
+              <input matInput type="number" formControlName="responseNumber">
+              @if (hasError('responseNumber', 'required')) {
+                <mat-error>Response Number is required.</mat-error>
+              }
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="span-2">
+              <mat-label>Verbatim Response</mat-label>
+              <textarea matInput rows="3" formControlName="verbatimResponse"></textarea>
+              @if (hasError('verbatimResponse', 'required')) {
+                <mat-error>Verbatim Response is required.</mat-error>
+              }
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="span-2">
+              <mat-label>Inquiry</mat-label>
+              <textarea matInput rows="3" formControlName="inquiry"></textarea>
+              @if (!responseForm.get('inquiry')?.value && responseForm.get('inquiry')?.touched) {
+                <mat-hint class="warning-hint">Inquiry is empty.</mat-hint>
+              }
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Location Pointed By Examinee</mat-label>
+              <input matInput formControlName="locationPointed">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>What Made It Look Like That</mat-label>
+              <input matInput formControlName="madeItLookLike">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="span-2">
+              <mat-label>Examiner Notes</mat-label>
+              <textarea matInput rows="2" formControlName="examinerNotes"></textarea>
+            </mat-form-field>
+          </form>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Coding Fields</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form class="grid-form" [formGroup]="responseForm">
+            <mat-form-field appearance="outline">
+              <mat-label>Location</mat-label>
+              <mat-select formControlName="location">
+                @for (location of options.locations; track location.value) {
+                  <mat-option [value]="location.value">{{ location.label }}</mat-option>
+                }
+              </mat-select>
+              @if (hasError('location', 'required')) {
+                <mat-error>Location is required before Location Number.</mat-error>
+              }
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Location Number</mat-label>
+              <input matInput formControlName="locationNumber">
+              <mat-hint>Official Exner reference lookup required.</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Developmental Quality</mat-label>
+              <mat-select formControlName="developmentalQuality">
+                @for (quality of options.developmentalQualities; track quality.value) {
+                  <mat-option [value]="quality.value">{{ quality.label }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Determinants</mat-label>
+              <mat-select multiple formControlName="determinants">
+                @for (determinant of options.determinants; track determinant.value) {
+                  <mat-option [value]="determinant.value">{{ determinant.label }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Form Quality</mat-label>
+              <mat-select formControlName="formQuality">
+                @for (quality of options.formQualities; track quality.value) {
+                  <mat-option [value]="quality.value">{{ quality.label }}</mat-option>
+                }
+              </mat-select>
+              <mat-hint>Official Exner reference lookup required.</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>FQ Explanation</mat-label>
+              <input matInput formControlName="formQualityExplanation">
+              @if (hasError('formQualityExplanation', 'required')) {
+                <mat-error>FQ Explanation is required when FQ- is selected.</mat-error>
+              }
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Content Codes</mat-label>
+              <mat-select multiple formControlName="contentCodes">
+                @for (content of options.contentCodes; track content.value) {
+                  <mat-option [value]="content.value">{{ content.label }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+
+            <div class="checkbox-field">
+              <mat-checkbox formControlName="popular">Popular</mat-checkbox>
+              <span>Official Exner reference lookup required.</span>
+            </div>
+
+            <mat-form-field appearance="outline" class="span-2">
+              <mat-label>Special Scores</mat-label>
+              <mat-select multiple formControlName="specialScores">
+                @for (score of options.specialScores; track score.value) {
+                  <mat-option [value]="score.value">{{ score.label }}</mat-option>
+                }
+              </mat-select>
+              <mat-hint>Official Exner reference lookup required.</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="span-2">
+              <mat-label>Coding Explanation</mat-label>
+              <textarea matInput rows="3" formControlName="codingExplanation"></textarea>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Confidence</mat-label>
+              <mat-select formControlName="confidence">
+                @for (confidence of options.confidenceLevels; track confidence.value) {
+                  <mat-option [value]="confidence.value">{{ confidence.label }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Missing Information</mat-label>
+              <input matInput formControlName="missingInformation">
+              @if (hasError('missingInformation', 'required')) {
+                <mat-error>Missing Information is required when Confidence is Low.</mat-error>
+              }
+            </mat-form-field>
+          </form>
+
+          @if (needsReferenceLookup) {
+            <div class="inline-warning">
+              <mat-icon>info</mat-icon>
+              <span>Official Exner reference lookup required.</span>
+            </div>
+          }
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-stroked-button type="button" (click)="clearResponseForm()">
+            <mat-icon>backspace</mat-icon>
+            Clear Form
+          </button>
+          <button mat-flat-button color="primary" type="button" (click)="addOrUpdateResponse()">
+            <mat-icon>{{ editingId ? 'check' : 'add' }}</mat-icon>
+            {{ editingId ? 'Update Response' : 'Add Response' }}
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+
+    <aside class="viewer-column">
+      <mat-card class="viewer-card">
+        <mat-card-header>
+          <mat-card-title>Card Location Map</mat-card-title>
+          <mat-card-subtitle>{{ selectedCard?.label || 'Select a card' }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <app-card-location-map
+            [cardNumber]="responseForm.get('cardNumber')?.value || ''"
+            [selectedLocationCodes]="selectedLocationCodes"
+            (locationSelectionChange)="onLocationSelectionChange($event)"
+            (selectedRegionsChange)="onSelectedRegionsChange($event)"
+            (regionClicked)="onRegionClicked($event)">
+          </app-card-location-map>
+
+          @if (locationTypeWarning) {
+            <div class="inline-warning">
+              <mat-icon>warning</mat-icon>
+              <span>{{ locationTypeWarning }}</span>
+            </div>
+          }
+
+          <mat-chip-set class="selected-location-chips" aria-label="Selected location regions">
+            @for (code of selectedLocationCodes; track code) {
+              <mat-chip>{{ code }}</mat-chip>
+            }
+          </mat-chip-set>
+        </mat-card-content>
+      </mat-card>
+    </aside>
+  </section>
+
+  <section class="actions-band">
+    <button mat-stroked-button type="button" (click)="saveToLocalStorage()">
+      <mat-icon>save</mat-icon>
+      Save to LocalStorage
+    </button>
+    <button mat-stroked-button type="button" (click)="loadFromLocalStorage()">
+      <mat-icon>folder_open</mat-icon>
+      Load from LocalStorage
+    </button>
+    <button mat-stroked-button type="button" (click)="exportJson()">
+      <mat-icon>data_object</mat-icon>
+      Export JSON
+    </button>
+    <label class="file-button">
+      <input type="file" accept="application/json,.json" (change)="importJson($event)">
+      <mat-icon>upload_file</mat-icon>
+      Import JSON
+    </label>
+    <button mat-stroked-button type="button" (click)="exportCsv()">
+      <mat-icon>download</mat-icon>
+      Export CSV
+    </button>
+  </section>
+
+  <section class="summary-section">
+    <h2>Structural Summary Preview</h2>
+    <p>No clinical interpretation is produced. These are simple browser-side counts only.</p>
+    <div class="summary-grid">
+      <div class="summary-metric">
+        <span>Total responses R</span>
+        <strong>{{ summary.totalResponses }}</strong>
+      </div>
+      <div class="summary-metric">
+        <span>Popular count</span>
+        <strong>{{ summary.popularCount }}</strong>
+      </div>
+
+      <div class="summary-list">
+        <h3>Count by Card</h3>
+        @for (item of objectEntries(summary.byCard); track item.key) {
+          <span>{{ item.key }}: {{ item.value }}</span>
+        }
+      </div>
+      <div class="summary-list">
+        <h3>Count by Location</h3>
+        @for (item of objectEntries(summary.byLocation); track item.key) {
+          <span>{{ item.key }}: {{ item.value }}</span>
+        }
+      </div>
+      <div class="summary-list">
+        <h3>Count by DQ</h3>
+        @for (item of objectEntries(summary.byDevelopmentalQuality); track item.key) {
+          <span>{{ item.key }}: {{ item.value }}</span>
+        }
+      </div>
+      <div class="summary-list">
+        <h3>Count by Determinants</h3>
+        @for (item of objectEntries(summary.byDeterminants); track item.key) {
+          <span>{{ item.key }}: {{ item.value }}</span>
+        }
+      </div>
+      <div class="summary-list">
+        <h3>Count by Content</h3>
+        @for (item of objectEntries(summary.byContent); track item.key) {
+          <span>{{ item.key }}: {{ item.value }}</span>
+        }
+      </div>
+      <div class="summary-list">
+        <h3>Count by Special Scores</h3>
+        @for (item of objectEntries(summary.bySpecialScores); track item.key) {
+          <span>{{ item.key }}: {{ item.value }}</span>
+        }
+      </div>
+      <div class="summary-list">
+        <h3>FQ Count</h3>
+        @for (item of objectEntries(summary.byFormQuality); track item.key) {
+          <span>{{ item.key }}: {{ item.value }}</span>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="table-section">
+    <h2>Coded Responses</h2>
+    <div class="table-wrap">
+      <table mat-table [dataSource]="responses">
+        <ng-container matColumnDef="cardNumber">
+          <th mat-header-cell *matHeaderCellDef>Card</th>
+          <td mat-cell *matCellDef="let response">{{ response.cardNumber }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="responseNumber">
+          <th mat-header-cell *matHeaderCellDef>R#</th>
+          <td mat-cell *matCellDef="let response">{{ response.responseNumber }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="verbatimResponse">
+          <th mat-header-cell *matHeaderCellDef>Verbatim Response</th>
+          <td mat-cell *matCellDef="let response">{{ response.verbatimResponse }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="inquiry">
+          <th mat-header-cell *matHeaderCellDef>Inquiry</th>
+          <td mat-cell *matCellDef="let response">{{ response.inquiry }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="location">
+          <th mat-header-cell *matHeaderCellDef>Location</th>
+          <td mat-cell *matCellDef="let response">{{ response.location }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="locationNumber">
+          <th mat-header-cell *matHeaderCellDef>Loc No</th>
+          <td mat-cell *matCellDef="let response">{{ response.locationNumber }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="developmentalQuality">
+          <th mat-header-cell *matHeaderCellDef>DQ</th>
+          <td mat-cell *matCellDef="let response">{{ response.developmentalQuality }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="determinants">
+          <th mat-header-cell *matHeaderCellDef>Determinants</th>
+          <td mat-cell *matCellDef="let response">{{ response.determinants.join(', ') }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="formQuality">
+          <th mat-header-cell *matHeaderCellDef>FQ</th>
+          <td mat-cell *matCellDef="let response">{{ response.formQuality }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="contentCodes">
+          <th mat-header-cell *matHeaderCellDef>Content</th>
+          <td mat-cell *matCellDef="let response">{{ response.contentCodes.join(', ') }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="popular">
+          <th mat-header-cell *matHeaderCellDef>P</th>
+          <td mat-cell *matCellDef="let response">{{ response.popular ? 'Yes' : 'No' }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="specialScores">
+          <th mat-header-cell *matHeaderCellDef>Special Scores</th>
+          <td mat-cell *matCellDef="let response">{{ response.specialScores.join(', ') }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="confidence">
+          <th mat-header-cell *matHeaderCellDef>Confidence</th>
+          <td mat-cell *matCellDef="let response">{{ response.confidence }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Actions</th>
+          <td mat-cell *matCellDef="let response">
+            <button mat-icon-button type="button" matTooltip="Edit" (click)="editResponse(response)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button type="button" matTooltip="Delete" (click)="deleteResponse(response.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      @if (!responses.length) {
+        <div class="empty-table">No coded responses yet.</div>
+      }
+    </div>
+  </section>
+</main>

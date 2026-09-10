@@ -1,0 +1,1546 @@
+{
+  "I": {
+    "note": "Automatically prepared starter map from uploaded Card I and Appendix A.1 reference image; verify/adjust before clinical use.",
+    "regions": [
+      {
+        "code": "W",
+        "type": "W",
+        "label": "Whole blot",
+        "description": "Approximate whole blot boundary"
+      },
+      {
+        "code": "D1",
+        "type": "D",
+        "label": "D1",
+        "description": "Small top central dark/gray details"
+      },
+      {
+        "code": "D2",
+        "type": "D",
+        "label": "D2",
+        "description": "Right upper wing-like common detail"
+      },
+      {
+        "code": "D3",
+        "type": "D",
+        "label": "D3",
+        "description": "Central lower vertical detail"
+      },
+      {
+        "code": "D4",
+        "type": "D",
+        "label": "D4",
+        "description": "Central body-like common detail"
+      },
+      {
+        "code": "D7",
+        "type": "D",
+        "label": "D7",
+        "description": "Large common blot area"
+      },
+      {
+        "code": "Dd21",
+        "type": "Dd",
+        "label": "Dd21",
+        "description": "Small left central top projection"
+      },
+      {
+        "code": "Dd22",
+        "type": "Dd",
+        "label": "Dd22",
+        "description": "Small paired central top detail"
+      },
+      {
+        "code": "Dd23",
+        "type": "Dd",
+        "label": "Dd23",
+        "description": "Lower right inner white/edge detail"
+      },
+      {
+        "code": "Dd24",
+        "type": "Dd",
+        "label": "Dd24",
+        "description": "Large central dark lower form from appendix labeling"
+      },
+      {
+        "code": "Dd25",
+        "type": "Dd",
+        "label": "Dd25",
+        "description": "Small right-side outer detail"
+      },
+      {
+        "code": "Dd26",
+        "type": "Dd",
+        "label": "Dd26",
+        "description": "Lower left internal triangular dark detail"
+      },
+      {
+        "code": "Dd27",
+        "type": "Dd",
+        "label": "Dd27",
+        "description": "Narrow central vertical line/detail"
+      },
+      {
+        "code": "Dd28",
+        "type": "Dd",
+        "label": "Dd28",
+        "description": "Upper left wing/side detail"
+      },
+      {
+        "code": "Dd29",
+        "type": "DdS",
+        "label": "DdS29",
+        "description": "Left inner white space/edge region"
+      },
+      {
+        "code": "Dd30",
+        "type": "DdS",
+        "label": "DdS30",
+        "description": "Right inner white space/edge region"
+      },
+      {
+        "code": "Dd31",
+        "type": "Dd",
+        "label": "Dd31",
+        "description": "Bottom central small projection"
+      },
+      {
+        "code": "Dd32",
+        "type": "DdS",
+        "label": "DdS32",
+        "description": "Upper central white/negative-space area"
+      },
+      {
+        "code": "Dd33",
+        "type": "Dd",
+        "label": "Dd33",
+        "description": "Lower right small outer hanging detail"
+      },
+      {
+        "code": "Dd34",
+        "type": "Dd",
+        "label": "Dd34",
+        "description": "Far right outer wing tip/detail"
+      },
+      {
+        "code": "Dd35",
+        "type": "Dd",
+        "label": "Dd35",
+        "description": "Lower left outer side detail"
+      },
+      {
+        "code": "D5",
+        "type": "D",
+        "label": "D5",
+        "description": "Lower-left common detail (catalog; confirm on Table A)"
+      },
+      {
+        "code": "D6",
+        "type": "D",
+        "label": "D6",
+        "description": "Lower-right common detail (catalog; confirm on Table A)"
+      },
+      {
+        "code": "Dd99",
+        "type": "Dd",
+        "label": "Dd99",
+        "description": "Area not listed in Table A"
+      }
+    ]
+  },
+  "II": {
+    "note": "Starter map from Figure A.2 + Card II photo; verify before clinical use.",
+    "regions": [
+      {
+        "code": "W",
+        "type": "W",
+        "label": "Whole blot",
+        "description": "Whole blot"
+      },
+      {
+        "code": "D1",
+        "type": "D",
+        "label": "D1",
+        "description": "Upper right red common detail"
+      },
+      {
+        "code": "D2",
+        "type": "D",
+        "label": "D2",
+        "description": "Upper left red common detail"
+      },
+      {
+        "code": "D3",
+        "type": "D",
+        "label": "D3",
+        "description": "Lower central red common detail"
+      },
+      {
+        "code": "D4",
+        "type": "D",
+        "label": "D4",
+        "description": "Right black common detail"
+      },
+      {
+        "code": "D6",
+        "type": "D",
+        "label": "D6",
+        "description": "Both upper red details combined"
+      },
+      {
+        "code": "DS5",
+        "type": "S",
+        "label": "DS5",
+        "description": "Central white space"
+      },
+      {
+        "code": "Dd21",
+        "type": "Dd",
+        "label": "Dd21",
+        "description": "Small upper-right unusual detail"
+      },
+      {
+        "code": "Dd22",
+        "type": "Dd",
+        "label": "Dd22",
+        "description": "Small lower-left outer unusual detail"
+      },
+      {
+        "code": "Dd23",
+        "type": "Dd",
+        "label": "Dd23",
+        "description": "Lower-right inner unusual detail"
+      },
+      {
+        "code": "Dd24",
+        "type": "Dd",
+        "label": "Dd24",
+        "description": "Lower-left inner unusual detail"
+      },
+      {
+        "code": "Dd25",
+        "type": "Dd",
+        "label": "Dd25",
+        "description": "Lower-left inner space/edge detail"
+      },
+      {
+        "code": "Dd26",
+        "type": "Dd",
+        "label": "Dd26",
+        "description": "Upper-right small unusual detail"
+      },
+      {
+        "code": "Dd27",
+        "type": "Dd",
+        "label": "Dd27",
+        "description": "Upper inner white-space edge"
+      },
+      {
+        "code": "Dd28",
+        "type": "Dd",
+        "label": "Dd28",
+        "description": "Lower-right inner space/edge detail"
+      },
+      {
+        "code": "Dd31",
+        "type": "Dd",
+        "label": "Dd31",
+        "description": "Right outer small unusual detail"
+      },
+      {
+        "code": "DdS29",
+        "type": "DdS",
+        "label": "DdS29",
+        "description": "Upper-right inner space detail"
+      },
+      {
+        "code": "DdS30",
+        "type": "DdS",
+        "label": "DdS30",
+        "description": "Upper-left inner space detail"
+      },
+      {
+        "code": "D5",
+        "type": "D",
+        "label": "D5",
+        "description": "Upper inner black common detail"
+      },
+      {
+        "code": "S",
+        "type": "S",
+        "label": "S",
+        "description": "Central white space; pair with D/Dd as DS/DdS in coding"
+      },
+      {
+        "code": "Dd99",
+        "type": "Dd",
+        "label": "Dd99",
+        "description": "Area not listed in Table A"
+      }
+    ]
+  },
+  "III": {
+    "note": "Starter map from Figure A.3 + Card III photo; verify before clinical use.",
+    "regions": [
+      {
+        "code": "W",
+        "type": "W",
+        "label": "Whole blot",
+        "description": "Whole blot"
+      },
+      {
+        "code": "D1",
+        "type": "D",
+        "label": "D1",
+        "description": "Human figure (right side as labeled)"
+      },
+      {
+        "code": "D2",
+        "type": "D",
+        "label": "D2",
+        "description": "Left outer red common detail"
+      },
+      {
+        "code": "D3",
+        "type": "D",
+        "label": "D3",
+        "description": "Center red bow / butterfly"
+      },
+      {
+        "code": "D5",
+        "type": "D",
+        "label": "D5",
+        "description": "Right lower-leg common detail"
+      },
+      {
+        "code": "D7",
+        "type": "D",
+        "label": "D7",
+        "description": "Lower central common detail"
+      },
+      {
+        "code": "D8",
+        "type": "D",
+        "label": "D8",
+        "description": "Lower-center inner common detail"
+      },
+      {
+        "code": "D9",
+        "type": "D",
+        "label": "D9",
+        "description": "Head / upper human-figure detail"
+      },
+      {
+        "code": "Dd21",
+        "type": "Dd",
+        "label": "Dd21",
+        "description": "Right mid unusual detail"
+      },
+      {
+        "code": "Dd22",
+        "type": "Dd",
+        "label": "Dd22",
+        "description": "Left inner mid unusual detail"
+      },
+      {
+        "code": "Dd25",
+        "type": "Dd",
+        "label": "Dd25",
+        "description": "Upper-right small unusual detail"
+      },
+      {
+        "code": "Dd26",
+        "type": "Dd",
+        "label": "Dd26",
+        "description": "Lower-right unusual detail"
+      },
+      {
+        "code": "Dd27",
+        "type": "Dd",
+        "label": "Dd27",
+        "description": "Upper inner unusual detail"
+      },
+      {
+        "code": "Dd28",
+        "type": "Dd",
+        "label": "Dd28",
+        "description": "Center inner unusual detail"
+      },
+      {
+        "code": "Dd29",
+        "type": "Dd",
+        "label": "Dd29",
+        "description": "Upper-center small unusual detail"
+      },
+      {
+        "code": "Dd30",
+        "type": "Dd",
+        "label": "Dd30",
+        "description": "Right inner mid unusual detail"
+      },
+      {
+        "code": "Dd31",
+        "type": "Dd",
+        "label": "Dd31",
+        "description": "Lower inner unusual detail"
+      },
+      {
+        "code": "Dd32",
+        "type": "Dd",
+        "label": "Dd32",
+        "description": "Right outer red unusual detail"
+      },
+      {
+        "code": "Dd33",
+        "type": "Dd",
+        "label": "Dd33",
+        "description": "Lower-right inner unusual detail"
+      },
+      {
+        "code": "Dd34",
+        "type": "Dd",
+        "label": "Dd34",
+        "description": "Left outer red splash"
+      },
+      {
+        "code": "Dd35",
+        "type": "Dd",
+        "label": "Dd35",
+        "description": "Upper-left small unusual detail"
+      },
+      {
+        "code": "DdS23",
+        "type": "DdS",
+        "label": "DdS23",
+        "description": "Lower-right white-space detail"
+      },
+      {
+        "code": "DdS24",
+        "type": "DdS",
+        "label": "DdS24",
+        "description": "Large central white space"
+      },
+      {
+        "code": "D4",
+        "type": "D",
+        "label": "D4",
+        "description": "Lower side black common detail"
+      },
+      {
+        "code": "D6",
+        "type": "D",
+        "label": "D6",
+        "description": "Mid figure common detail"
+      },
+      {
+        "code": "D11",
+        "type": "D",
+        "label": "D11",
+        "description": "Additional common detail (confirm on Table A)"
+      },
+      {
+        "code": "D12",
+        "type": "D",
+        "label": "D12",
+        "description": "Additional common detail (confirm on Table A)"
+      },
+      {
+        "code": "S",
+        "type": "S",
+        "label": "S",
+        "description": "Central white space"
+      },
+      {
+        "code": "Dd99",
+        "type": "Dd",
+        "label": "Dd99",
+        "description": "Area not listed in Table A"
+      }
+    ]
+  },
+  "IV": {
+    "note": "starter map derived from uploaded Figure A.4 image; verify manually before clinical use",
+    "regions": [
+      {
+        "code": "W",
+        "type": "W",
+        "label": "Whole blot",
+        "description": "Approximate whole blot boundary"
+      },
+      {
+        "code": "D1",
+        "type": "D",
+        "label": "D1",
+        "description": "Approximate central lower detail"
+      },
+      {
+        "code": "D2",
+        "type": "D",
+        "label": "D2",
+        "description": "Approximate right lower side detail"
+      },
+      {
+        "code": "D3",
+        "type": "D",
+        "label": "D3",
+        "description": "Approximate upper central detail"
+      },
+      {
+        "code": "D4",
+        "type": "D",
+        "label": "D4",
+        "description": "Approximate upper left hanging detail"
+      },
+      {
+        "code": "D5",
+        "type": "D",
+        "label": "D5",
+        "description": "Approximate central vertical detail"
+      },
+      {
+        "code": "D6",
+        "type": "D",
+        "label": "D6",
+        "description": "Approximate right lower side detail, alternate labeled region"
+      },
+      {
+        "code": "D7",
+        "type": "D",
+        "label": "D7",
+        "description": "Approximate large common detail excluding lower central white/gray area"
+      },
+      {
+        "code": "Dd21",
+        "type": "Dd",
+        "label": "Dd21",
+        "description": "Approximate small upper left edge detail"
+      },
+      {
+        "code": "Dd22",
+        "type": "Dd",
+        "label": "Dd22",
+        "description": "Approximate upper right oval detail"
+      },
+      {
+        "code": "Dd23",
+        "type": "Dd",
+        "label": "Dd23",
+        "description": "Approximate right upper hanging edge detail"
+      },
+      {
+        "code": "Dd24",
+        "type": "Dd",
+        "label": "Dd24",
+        "description": "Approximate lower left inner detail"
+      },
+      {
+        "code": "Dd25",
+        "type": "Dd",
+        "label": "Dd25",
+        "description": "Approximate narrow upper middle detail"
+      },
+      {
+        "code": "Dd26",
+        "type": "Dd",
+        "label": "Dd26",
+        "description": "Approximate lower right base detail"
+      },
+      {
+        "code": "Dd27",
+        "type": "Dd",
+        "label": "Dd27",
+        "description": "Approximate small inner right white/edge detail"
+      },
+      {
+        "code": "Dd28",
+        "type": "Dd",
+        "label": "Dd28",
+        "description": "Approximate lower left base detail"
+      },
+      {
+        "code": "Dd29",
+        "type": "Dd",
+        "label": "Dd29",
+        "description": "Approximate small inner left detail"
+      },
+      {
+        "code": "Dd30",
+        "type": "Dd",
+        "label": "Dd30",
+        "description": "Approximate very top small detail"
+      },
+      {
+        "code": "Dd31",
+        "type": "Dd",
+        "label": "Dd31",
+        "description": "Approximate left lower side detail"
+      },
+      {
+        "code": "Dd32",
+        "type": "Dd",
+        "label": "Dd32",
+        "description": "Approximate far right lower tip/detail"
+      },
+      {
+        "code": "Dd33",
+        "type": "Dd",
+        "label": "Dd33",
+        "description": "Approximate central narrow vertical detail"
+      },
+      {
+        "code": "Dd99",
+        "type": "Dd",
+        "label": "Dd99",
+        "description": "Area not listed in Table A"
+      }
+    ]
+  },
+  "V": {
+    "note": "Starter map from Figure A.5 + Card V photo; verify before clinical use.",
+    "regions": [
+      {
+        "code": "W",
+        "type": "W",
+        "label": "Whole blot",
+        "description": "Whole blot"
+      },
+      {
+        "code": "D1",
+        "type": "D",
+        "label": "D1",
+        "description": "Right wing-tip common detail"
+      },
+      {
+        "code": "D4",
+        "type": "D",
+        "label": "D4",
+        "description": "Left wing common detail"
+      },
+      {
+        "code": "D6",
+        "type": "D",
+        "label": "D6",
+        "description": "Upper projections / “ears”"
+      },
+      {
+        "code": "D7",
+        "type": "D",
+        "label": "D7",
+        "description": "Central vertical body"
+      },
+      {
+        "code": "D9",
+        "type": "D",
+        "label": "D9",
+        "description": "Lower central legs"
+      },
+      {
+        "code": "D10",
+        "type": "D",
+        "label": "D10",
+        "description": "Far right wing-tip common detail"
+      },
+      {
+        "code": "Dd22",
+        "type": "Dd",
+        "label": "Dd22",
+        "description": "Left mid-wing unusual detail"
+      },
+      {
+        "code": "Dd23",
+        "type": "Dd",
+        "label": "Dd23",
+        "description": "Right lower-wing unusual detail"
+      },
+      {
+        "code": "Dd24",
+        "type": "Dd",
+        "label": "Dd24",
+        "description": "Upper-center small unusual detail"
+      },
+      {
+        "code": "Dd25",
+        "type": "Dd",
+        "label": "Dd25",
+        "description": "Lower-left inner unusual detail"
+      },
+      {
+        "code": "Dd26",
+        "type": "Dd",
+        "label": "Dd26",
+        "description": "Right mid-wing unusual detail"
+      },
+      {
+        "code": "Dd30",
+        "type": "Dd",
+        "label": "Dd30",
+        "description": "Upper-center between projections"
+      },
+      {
+        "code": "Dd31",
+        "type": "Dd",
+        "label": "Dd31",
+        "description": "Top-center small unusual detail"
+      },
+      {
+        "code": "Dd32",
+        "type": "Dd",
+        "label": "Dd32",
+        "description": "Lower-center inner unusual detail"
+      },
+      {
+        "code": "Dd33",
+        "type": "Dd",
+        "label": "Dd33",
+        "description": "Upper-right inner unusual detail"
+      },
+      {
+        "code": "Dd34",
+        "type": "Dd",
+        "label": "Dd34",
+        "description": "Upper-left inner unusual detail"
+      },
+      {
+        "code": "Dd35",
+        "type": "Dd",
+        "label": "Dd35",
+        "description": "Left upper-wing unusual detail"
+      },
+      {
+        "code": "DdS27",
+        "type": "DdS",
+        "label": "DdS27",
+        "description": "Lower-center white/edge space"
+      },
+      {
+        "code": "DdS28",
+        "type": "DdS",
+        "label": "DdS28",
+        "description": "Upper inner white space"
+      },
+      {
+        "code": "DdS29",
+        "type": "DdS",
+        "label": "DdS29",
+        "description": "Left outer white-edge detail"
+      },
+      {
+        "code": "D2",
+        "type": "D",
+        "label": "D2",
+        "description": "Upper projection common detail"
+      },
+      {
+        "code": "D3",
+        "type": "D",
+        "label": "D3",
+        "description": "Lower projection common detail"
+      },
+      {
+        "code": "Dd99",
+        "type": "Dd",
+        "label": "Dd99",
+        "description": "Area not listed in Table A"
+      }
+    ]
+  },
+  "VI": {
+    "note": "Starter map from Figure A.6 + Card VI photo; verify before clinical use.",
+    "regions": [
+      {
+        "code": "W",
+        "type": "W",
+        "label": "Whole blot",
+        "description": "Whole blot"
+      },
+      {
+        "code": "D1",
+        "type": "D",
+        "label": "D1",
+        "description": "Large lower body (may include dashed area)"
+      },
+      {
+        "code": "D2",
+        "type": "D",
+        "label": "D2",
+        "description": "Upper whisker / side-top common detail"
+      },
+      {
+        "code": "D3",
+        "type": "D",
+        "label": "D3",
+        "description": "Top-most projection"
+      },
+      {
+        "code": "D4",
+        "type": "D",
+        "label": "D4",
+        "description": "Right half of blot"
+      },
+      {
+        "code": "D5",
+        "type": "D",
+        "label": "D5",
+        "description": "Central vertical column"
+      },
+      {
+        "code": "D6",
+        "type": "D",
+        "label": "D6",
+        "description": "Upper-center stem"
+      },
+      {
+        "code": "D8",
+        "type": "D",
+        "label": "D8",
+        "description": "Upper body below top projection"
+      },
+      {
+        "code": "D12",
+        "type": "D",
+        "label": "D12",
+        "description": "Right inner column / body"
+      },
+      {
+        "code": "Dd21",
+        "type": "Dd",
+        "label": "Dd21",
+        "description": "Lower-left small unusual detail"
+      },
+      {
+        "code": "Dd22",
+        "type": "Dd",
+        "label": "Dd22",
+        "description": "Upper-left whisker unusual detail"
+      },
+      {
+        "code": "Dd23",
+        "type": "Dd",
+        "label": "Dd23",
+        "description": "Top-left small unusual detail"
+      },
+      {
+        "code": "Dd24",
+        "type": "Dd",
+        "label": "Dd24",
+        "description": "Left outer side unusual detail"
+      },
+      {
+        "code": "Dd25",
+        "type": "Dd",
+        "label": "Dd25",
+        "description": "Right inner-upper unusual detail"
+      },
+      {
+        "code": "Dd26",
+        "type": "Dd",
+        "label": "Dd26",
+        "description": "Upper-right whisker unusual detail"
+      },
+      {
+        "code": "Dd27",
+        "type": "Dd",
+        "label": "Dd27",
+        "description": "Lower-right small unusual detail"
+      },
+      {
+        "code": "Dd28",
+        "type": "Dd",
+        "label": "Dd28",
+        "description": "Lower-left edge unusual detail"
+      },
+      {
+        "code": "Dd29",
+        "type": "Dd",
+        "label": "Dd29",
+        "description": "Right outer side unusual detail"
+      },
+      {
+        "code": "Dd31",
+        "type": "Dd",
+        "label": "Dd31",
+        "description": "Upper-right inner stem unusual detail"
+      },
+      {
+        "code": "Dd32",
+        "type": "Dd",
+        "label": "Dd32",
+        "description": "Center small unusual detail"
+      },
+      {
+        "code": "Dd33",
+        "type": "Dd",
+        "label": "Dd33",
+        "description": "Bottom-center unusual detail"
+      },
+      {
+        "code": "DdS30",
+        "type": "DdS",
+        "label": "DdS30",
+        "description": "Lower-center white/edge space"
+      },
+      {
+        "code": "Dd99",
+        "type": "Dd",
+        "label": "Dd99",
+        "description": "Area not listed in Table A"
+      }
+    ]
+  },
+  "VII": {
+    "note": "Starter map from Figure A.7 + Card VII photo; verify before clinical use.",
+    "regions": [
+      {
+        "code": "W",
+        "type": "W",
+        "label": "Whole blot",
+        "description": "Whole blot"
+      },
+      {
+        "code": "D1",
+        "type": "D",
+        "label": "D1",
+        "description": "Upper-left common detail"
+      },
+      {
+        "code": "D2",
+        "type": "D",
+        "label": "D2",
+        "description": "Upper-right common detail"
+      },
+      {
+        "code": "D3",
+        "type": "D",
+        "label": "D3",
+        "description": "Right middle common detail"
+      },
+      {
+        "code": "D4",
+        "type": "D",
+        "label": "D4",
+        "description": "Lower combined common detail"
+      },
+      {
+        "code": "D5",
+        "type": "D",
+        "label": "D5",
+        "description": "Upper-right dark common detail"
+      },
+      {
+        "code": "D6",
+        "type": "D",
+        "label": "D6",
+        "description": "Lower-center common detail"
+      },
+      {
+        "code": "D8",
+        "type": "D",
+        "label": "D8",
+        "description": "Upper-left lighter common detail"
+      },
+      {
+        "code": "D9",
+        "type": "D",
+        "label": "D9",
+        "description": "Left mid dark common detail"
+      },
+      {
+        "code": "DS7",
+        "type": "S",
+        "label": "DS7",
+        "description": "Large upper/central white space"
+      },
+      {
+        "code": "DS10",
+        "type": "S",
+        "label": "DS10",
+        "description": "Central white space between sides"
+      },
+      {
+        "code": "Dd21",
+        "type": "Dd",
+        "label": "Dd21",
+        "description": "Far-left small unusual detail"
+      },
+      {
+        "code": "Dd22",
+        "type": "Dd",
+        "label": "Dd22",
+        "description": "Left inner unusual detail"
+      },
+      {
+        "code": "Dd23",
+        "type": "Dd",
+        "label": "Dd23",
+        "description": "Lower-center join unusual detail"
+      },
+      {
+        "code": "Dd24",
+        "type": "Dd",
+        "label": "Dd24",
+        "description": "Right inner unusual detail"
+      },
+      {
+        "code": "Dd25",
+        "type": "Dd",
+        "label": "Dd25",
+        "description": "Lower inner white-edge unusual detail"
+      },
+      {
+        "code": "Dd26",
+        "type": "Dd",
+        "label": "Dd26",
+        "description": "Lower-left inner unusual detail"
+      },
+      {
+        "code": "Dd27",
+        "type": "Dd",
+        "label": "Dd27",
+        "description": "Lower-right inner unusual detail"
+      },
+      {
+        "code": "Dd28",
+        "type": "Dd",
+        "label": "Dd28",
+        "description": "Bottom-center unusual detail"
+      },
+      {
+        "code": "D7",
+        "type": "D",
+        "label": "D7",
+        "description": "Large common detail"
+      },
+      {
+        "code": "S",
+        "type": "S",
+        "label": "S",
+        "description": "Lower white space"
+      },
+      {
+        "code": "Dd99",
+        "type": "Dd",
+        "label": "Dd99",
+        "description": "Area not listed in Table A"
+      }
+    ]
+  },
+  "VIII": {
+    "note": "Starter map from Figure A.8 + Card VIII photo; verify before clinical use.",
+    "regions": [
+      {
+        "code": "W",
+        "type": "W",
+        "label": "Whole blot",
+        "description": "Whole blot"
+      },
+      {
+        "code": "D1",
+        "type": "D",
+        "label": "D1",
+        "description": "Right pink animal common detail"
+      },
+      {
+        "code": "D2",
+        "type": "D",
+        "label": "D2",
+        "description": "Lower pink/orange common detail"
+      },
+      {
+        "code": "D3",
+        "type": "D",
+        "label": "D3",
+        "description": "Upper gray/blue common detail"
+      },
+      {
+        "code": "D4",
+        "type": "D",
+        "label": "D4",
+        "description": "Left blue/rib common detail"
+      },
+      {
+        "code": "D5",
+        "type": "D",
+        "label": "D5",
+        "description": "Right blue/rib common detail"
+      },
+      {
+        "code": "D6",
+        "type": "D",
+        "label": "D6",
+        "description": "Top gray common detail"
+      },
+      {
+        "code": "D7",
+        "type": "D",
+        "label": "D7",
+        "description": "Lower-left orange common detail"
+      },
+      {
+        "code": "D8",
+        "type": "D",
+        "label": "D8",
+        "description": "D4+D5 combined (both blue/rib sides)"
+      },
+      {
+        "code": "DS3",
+        "type": "S",
+        "label": "DS3",
+        "description": "Upper inner white space (D3 or DS3)"
+      },
+      {
+        "code": "Dd21",
+        "type": "Dd",
+        "label": "Dd21",
+        "description": "Top-center unusual detail"
+      },
+      {
+        "code": "Dd22",
+        "type": "Dd",
+        "label": "Dd22",
+        "description": "Left upper-side unusual detail"
+      },
+      {
+        "code": "Dd23",
+        "type": "Dd",
+        "label": "Dd23",
+        "description": "Lower-left small unusual detail"
+      },
+      {
+        "code": "Dd24",
+        "type": "Dd",
+        "label": "Dd24",
+        "description": "Upper-center small unusual detail"
+      },
+      {
+        "code": "Dd25",
+        "type": "Dd",
+        "label": "Dd25",
+        "description": "Right inner unusual detail"
+      },
+      {
+        "code": "Dd26",
+        "type": "Dd",
+        "label": "Dd26",
+        "description": "Lower-right small unusual detail"
+      },
+      {
+        "code": "Dd27",
+        "type": "Dd",
+        "label": "Dd27",
+        "description": "Right inner-upper unusual detail"
+      },
+      {
+        "code": "Dd30",
+        "type": "Dd",
+        "label": "Dd30",
+        "description": "Top spine unusual detail"
+      },
+      {
+        "code": "Dd31",
+        "type": "Dd",
+        "label": "Dd31",
+        "description": "Center spine unusual detail"
+      },
+      {
+        "code": "Dd33",
+        "type": "Dd",
+        "label": "Dd33",
+        "description": "Left inner unusual detail"
+      },
+      {
+        "code": "DdS28",
+        "type": "DdS",
+        "label": "DdS28",
+        "description": "Left inner white-space detail"
+      },
+      {
+        "code": "DdS29",
+        "type": "DdS",
+        "label": "DdS29",
+        "description": "Lower-center white-space detail"
+      },
+      {
+        "code": "DdS32",
+        "type": "DdS",
+        "label": "DdS32",
+        "description": "Right inner white-space detail"
+      },
+      {
+        "code": "Dd99",
+        "type": "Dd",
+        "label": "Dd99",
+        "description": "Area not listed in Table A"
+      }
+    ]
+  },
+  "IX": {
+    "note": "Starter map from Figure A.9 + Card IX photo; verify before clinical use.",
+    "regions": [
+      {
+        "code": "W",
+        "type": "W",
+        "label": "Whole blot",
+        "description": "Whole blot"
+      },
+      {
+        "code": "D1",
+        "type": "D",
+        "label": "D1",
+        "description": "Left orange common detail"
+      },
+      {
+        "code": "D2",
+        "type": "D",
+        "label": "D2",
+        "description": "Right green common detail"
+      },
+      {
+        "code": "D3",
+        "type": "D",
+        "label": "D3",
+        "description": "Upper-left green/orange common detail"
+      },
+      {
+        "code": "D4",
+        "type": "D",
+        "label": "D4",
+        "description": "Lower-left pink common detail"
+      },
+      {
+        "code": "D5",
+        "type": "D",
+        "label": "D5",
+        "description": "Lower-right inner common detail"
+      },
+      {
+        "code": "D6",
+        "type": "D",
+        "label": "D6",
+        "description": "Lower pink common detail"
+      },
+      {
+        "code": "D8",
+        "type": "D",
+        "label": "D8",
+        "description": "Center inner (D8 or DS8)"
+      },
+      {
+        "code": "D9",
+        "type": "D",
+        "label": "D9",
+        "description": "Lower-right pink common detail"
+      },
+      {
+        "code": "D11",
+        "type": "D",
+        "label": "D11",
+        "description": "Both D1 areas combined"
+      },
+      {
+        "code": "D12",
+        "type": "D",
+        "label": "D12",
+        "description": "Upper-right orange common detail"
+      },
+      {
+        "code": "DS8",
+        "type": "S",
+        "label": "DS8",
+        "description": "Center white space (D8 or DS8)"
+      },
+      {
+        "code": "Dd21",
+        "type": "Dd",
+        "label": "Dd21",
+        "description": "Lower-right small unusual detail"
+      },
+      {
+        "code": "Dd22",
+        "type": "Dd",
+        "label": "Dd22",
+        "description": "Right inner unusual detail (or DdS22)"
+      },
+      {
+        "code": "Dd24",
+        "type": "Dd",
+        "label": "Dd24",
+        "description": "Right mid small unusual detail"
+      },
+      {
+        "code": "Dd25",
+        "type": "Dd",
+        "label": "Dd25",
+        "description": "Upper-left inner unusual detail"
+      },
+      {
+        "code": "Dd26",
+        "type": "Dd",
+        "label": "Dd26",
+        "description": "Upper-right inner unusual detail"
+      },
+      {
+        "code": "Dd27",
+        "type": "Dd",
+        "label": "Dd27",
+        "description": "Upper-left small unusual detail"
+      },
+      {
+        "code": "Dd28",
+        "type": "Dd",
+        "label": "Dd28",
+        "description": "Right inner-upper unusual detail"
+      },
+      {
+        "code": "Dd30",
+        "type": "Dd",
+        "label": "Dd30",
+        "description": "Lower-right edge unusual detail"
+      },
+      {
+        "code": "Dd31",
+        "type": "Dd",
+        "label": "Dd31",
+        "description": "Lower-left inner unusual detail"
+      },
+      {
+        "code": "Dd33",
+        "type": "Dd",
+        "label": "Dd33",
+        "description": "Lower-right inner unusual detail"
+      },
+      {
+        "code": "Dd34",
+        "type": "Dd",
+        "label": "Dd34",
+        "description": "Upper-right small unusual detail"
+      },
+      {
+        "code": "Dd35",
+        "type": "Dd",
+        "label": "Dd35",
+        "description": "Lower-center unusual detail"
+      },
+      {
+        "code": "DdS22",
+        "type": "DdS",
+        "label": "DdS22",
+        "description": "Right inner white space"
+      },
+      {
+        "code": "DdS23",
+        "type": "DdS",
+        "label": "DdS23",
+        "description": "Left inner white space"
+      },
+      {
+        "code": "DdS29",
+        "type": "DdS",
+        "label": "DdS29",
+        "description": "Left mid small space detail"
+      },
+      {
+        "code": "DdS32",
+        "type": "DdS",
+        "label": "DdS32",
+        "description": "Upper inner white space"
+      },
+      {
+        "code": "S",
+        "type": "S",
+        "label": "S",
+        "description": "Inner white space"
+      },
+      {
+        "code": "Dd99",
+        "type": "Dd",
+        "label": "Dd99",
+        "description": "Area not listed in Table A"
+      }
+    ]
+  },
+  "X": {
+    "note": "Starter map from Figure A.10 + Card X photo; verify before clinical use.",
+    "regions": [
+      {
+        "code": "W",
+        "type": "W",
+        "label": "Whole blot",
+        "description": "Whole blot"
+      },
+      {
+        "code": "D1",
+        "type": "D",
+        "label": "D1",
+        "description": "Left outer blue common detail"
+      },
+      {
+        "code": "D2",
+        "type": "D",
+        "label": "D2",
+        "description": "Lower pink common detail (right/inner)"
+      },
+      {
+        "code": "D3",
+        "type": "D",
+        "label": "D3",
+        "description": "Upper-center gray common detail"
+      },
+      {
+        "code": "D4",
+        "type": "D",
+        "label": "D4",
+        "description": "Lower-center green common detail"
+      },
+      {
+        "code": "D5",
+        "type": "D",
+        "label": "D5",
+        "description": "Lower inner yellow/pink common detail"
+      },
+      {
+        "code": "D6",
+        "type": "D",
+        "label": "D6",
+        "description": "Right inner blue/gray common detail"
+      },
+      {
+        "code": "D7",
+        "type": "D",
+        "label": "D7",
+        "description": "Left yellow/brown common detail"
+      },
+      {
+        "code": "D8",
+        "type": "D",
+        "label": "D8",
+        "description": "Upper-right gray common detail"
+      },
+      {
+        "code": "D9",
+        "type": "D",
+        "label": "D9",
+        "description": "Left pink common detail"
+      },
+      {
+        "code": "D10",
+        "type": "D",
+        "label": "D10",
+        "description": "Lower-right orange common detail"
+      },
+      {
+        "code": "D11",
+        "type": "D",
+        "label": "D11",
+        "description": "Top-center gray common detail"
+      },
+      {
+        "code": "D12",
+        "type": "D",
+        "label": "D12",
+        "description": "Right yellow common detail"
+      },
+      {
+        "code": "D13",
+        "type": "D",
+        "label": "D13",
+        "description": "Far-left orange common detail"
+      },
+      {
+        "code": "D14",
+        "type": "D",
+        "label": "D14",
+        "description": "Top spike common detail"
+      },
+      {
+        "code": "D15",
+        "type": "D",
+        "label": "D15",
+        "description": "Far-right green common detail"
+      },
+      {
+        "code": "Dd21",
+        "type": "Dd",
+        "label": "Dd21",
+        "description": "Top-center small unusual detail"
+      },
+      {
+        "code": "Dd25",
+        "type": "Dd",
+        "label": "Dd25",
+        "description": "Upper-right inner unusual detail"
+      },
+      {
+        "code": "Dd26",
+        "type": "Dd",
+        "label": "Dd26",
+        "description": "Left inner unusual detail"
+      },
+      {
+        "code": "Dd27",
+        "type": "Dd",
+        "label": "Dd27",
+        "description": "Right outer blue unusual detail"
+      },
+      {
+        "code": "Dd28",
+        "type": "Dd",
+        "label": "Dd28",
+        "description": "Right inner small unusual detail"
+      },
+      {
+        "code": "Dd31",
+        "type": "Dd",
+        "label": "Dd31",
+        "description": "Lower-left pink-edge unusual detail"
+      },
+      {
+        "code": "Dd32",
+        "type": "Dd",
+        "label": "Dd32",
+        "description": "Right inner-lower unusual detail"
+      },
+      {
+        "code": "Dd33",
+        "type": "Dd",
+        "label": "Dd33",
+        "description": "Lower-right inner unusual detail"
+      },
+      {
+        "code": "Dd34",
+        "type": "Dd",
+        "label": "Dd34",
+        "description": "Left inner-lower unusual detail"
+      },
+      {
+        "code": "Dd35",
+        "type": "Dd",
+        "label": "Dd35",
+        "description": "Left outer-upper unusual detail"
+      },
+      {
+        "code": "DdS22",
+        "type": "DdS",
+        "label": "DdS22",
+        "description": "Upper inner white space"
+      },
+      {
+        "code": "DdS29",
+        "type": "DdS",
+        "label": "DdS29",
+        "description": "Center inner white space"
+      },
+      {
+        "code": "DdS30",
+        "type": "DdS",
+        "label": "DdS30",
+        "description": "Right inner white-space detail"
+      },
+      {
+        "code": "Dd99",
+        "type": "Dd",
+        "label": "Dd99",
+        "description": "Area not listed in Table A"
+      }
+    ]
+  }
+}

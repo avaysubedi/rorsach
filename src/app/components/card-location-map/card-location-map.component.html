@@ -1,0 +1,102 @@
+<div class="map-shell">
+  <div class="map-controls">
+    <button mat-stroked-button type="button" (click)="selectWholeBlot()" [disabled]="!paletteRegions.length">
+      <mat-icon>select_all</mat-icon>
+      Whole Blot W
+    </button>
+    <button mat-stroked-button type="button" (click)="clearSelection()" [disabled]="!selectedCodes.size">
+      <mat-icon>layers_clear</mat-icon>
+      Clear Selection
+    </button>
+    <mat-slide-toggle [checked]="showLabels" (change)="showLabels = $event.checked" [disabled]="!hasSpatialMap">
+      Show Labels
+    </mat-slide-toggle>
+  </div>
+
+  <div class="map-stage" [class.is-empty]="!cardMap" [class.catalog-only]="cardMap && !hasSpatialMap">
+    @if (cardMap && !imageMissing) {
+      <img class="card-image" [src]="cardMap.image" [alt]="'Card ' + cardNumber" (error)="imageMissing = true">
+    }
+
+    @if (!cardMap || imageMissing) {
+      <div class="placeholder-card">
+        <mat-icon>image</mat-icon>
+        <span>
+          @if (hasSpatialMap) {
+            Card image missing. SVG location map remains available.
+          } @else if (cardMap) {
+            Card image missing. Use the location codes below until the spatial map is traced.
+          } @else if (loadFailed) {
+            Location map data could not be loaded.
+          } @else {
+            Select a card to load location codes.
+          }
+        </span>
+      </div>
+    }
+
+    @if (hasSpatialMap) {
+      <svg
+        class="region-overlay"
+        [attr.viewBox]="cardMap?.viewBox || '0 0 1000 1000'"
+        preserveAspectRatio="xMidYMid meet">
+        @for (region of spatialRegions; track region.code) {
+          @if (region.shape === 'polygon') {
+            <polygon
+              class="region"
+              [class.is-selected]="isSelected(region.code)"
+              [class.is-hovered]="hoveredCode === region.code"
+              [attr.points]="region.points"
+              (mouseenter)="hoveredCode = region.code"
+              (mouseleave)="hoveredCode = null"
+              (click)="toggleRegion(region)">
+              <title>{{ region.code }} - {{ region.description || region.label }}</title>
+            </polygon>
+          }
+        }
+
+        @if (showLabels) {
+          @for (region of spatialRegions; track region.code + '-label') {
+            <text
+              class="region-label"
+              [attr.x]="labelPosition(region).x"
+              [attr.y]="labelPosition(region).y">
+              {{ region.label }}
+            </text>
+          }
+        }
+      </svg>
+    }
+  </div>
+
+  @if (paletteGroups.length) {
+    <div class="code-palette" aria-label="Location codes">
+      @for (group of paletteGroups; track group.type) {
+        <div class="palette-group">
+          <span class="palette-title">{{ group.title }}</span>
+          <div class="palette-codes">
+            @for (region of group.regions; track region.code) {
+              <button
+                type="button"
+                class="code-chip"
+                [class.is-selected]="isSelected(region.code)"
+                [title]="region.description || region.label"
+                (click)="toggleRegion(region)">
+                {{ region.label }}
+              </button>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  }
+
+  <div class="selection-readout">
+    <strong>Selected:</strong>
+    <span>{{ selectedCodes.size ? selectedCodeList.join(', ') : 'None' }}</span>
+  </div>
+
+  @if (statusNote) {
+    <p class="source-note">{{ statusNote }}</p>
+  }
+</div>

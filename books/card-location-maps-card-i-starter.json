@@ -1,0 +1,177 @@
+{
+  "I": {
+    "image": "assets/cards/card-i.png",
+    "viewBox": "0 0 1000 1000",
+    "source": "Automatically prepared starter map from uploaded Card I and Appendix A.1 reference image; verify/adjust before clinical use.",
+    "regions": [
+      {
+        "code": "W",
+        "type": "W",
+        "label": "Whole blot",
+        "shape": "polygon",
+        "points": "80,510 160,465 250,305 330,360 410,475 455,440 500,485 545,440 590,475 670,360 750,305 840,465 920,510 830,560 790,700 690,710 610,815 535,890 500,955 465,890 390,815 310,710 210,700 170,560",
+        "description": "Approximate whole blot boundary"
+      },
+      {
+        "code": "D1",
+        "type": "D",
+        "label": "D1",
+        "shape": "polygon",
+        "points": "440,405 470,372 490,405 500,365 510,405 530,372 560,405 540,440 505,435 500,455 495,435 460,440",
+        "description": "Small top central dark/gray details"
+      },
+      {
+        "code": "D2",
+        "type": "D",
+        "label": "D2",
+        "shape": "polygon",
+        "points": "655,300 750,280 845,430 925,500 835,555 730,520 665,425",
+        "description": "Right upper wing-like common detail"
+      },
+      {
+        "code": "D3",
+        "type": "D",
+        "label": "D3",
+        "shape": "polygon",
+        "points": "470,635 530,635 545,890 515,965 485,965 455,890",
+        "description": "Central lower vertical detail"
+      },
+      {
+        "code": "D4",
+        "type": "D",
+        "label": "D4",
+        "shape": "polygon",
+        "points": "430,485 570,485 590,640 535,700 465,700 410,640",
+        "description": "Central body-like common detail"
+      },
+      {
+        "code": "D7",
+        "type": "D",
+        "label": "D7",
+        "shape": "polygon",
+        "points": "85,500 165,455 250,300 335,360 410,470 455,445 500,490 545,445 590,470 665,360 750,300 835,455 915,500 830,555 745,525 665,430 610,500 575,650 535,720 500,760 465,720 425,650 390,500 335,430 255,525 170,555",
+        "description": "Large common blot area"
+      },
+      {
+        "code": "Dd21",
+        "type": "Dd",
+        "label": "Dd21",
+        "shape": "polygon",
+        "points": "450,395 475,368 495,410 480,435 450,430",
+        "description": "Small left central top projection"
+      },
+      {
+        "code": "Dd22",
+        "type": "Dd",
+        "label": "Dd22",
+        "shape": "polygon",
+        "points": "465,390 500,365 535,390 545,425 515,450 485,450 455,425",
+        "description": "Small paired central top detail"
+      },
+      {
+        "code": "Dd23",
+        "type": "Dd",
+        "label": "Dd23",
+        "shape": "polygon",
+        "points": "655,645 700,620 735,700 720,760 675,750 640,700",
+        "description": "Lower right inner white/edge detail"
+      },
+      {
+        "code": "Dd24",
+        "type": "Dd",
+        "label": "Dd24",
+        "shape": "polygon",
+        "points": "425,545 575,545 590,850 530,930 470,930 410,850",
+        "description": "Large central dark lower form from appendix labeling"
+      },
+      {
+        "code": "Dd25",
+        "type": "Dd",
+        "label": "Dd25",
+        "shape": "polygon",
+        "points": "765,515 805,500 825,570 805,640 760,625 745,560",
+        "description": "Small right-side outer detail"
+      },
+      {
+        "code": "Dd26",
+        "type": "Dd",
+        "label": "Dd26",
+        "shape": "polygon",
+        "points": "420,690 470,720 445,790 390,760 370,705",
+        "description": "Lower left internal triangular dark detail"
+      },
+      {
+        "code": "Dd27",
+        "type": "Dd",
+        "label": "Dd27",
+        "shape": "polygon",
+        "points": "495,430 505,430 520,660 500,720 480,660",
+        "description": "Narrow central vertical line/detail"
+      },
+      {
+        "code": "Dd28",
+        "type": "Dd",
+        "label": "Dd28",
+        "shape": "polygon",
+        "points": "240,280 335,315 390,420 335,500 245,485 160,425",
+        "description": "Upper left wing/side detail"
+      },
+      {
+        "code": "Dd29",
+        "type": "DdS",
+        "label": "DdS29",
+        "shape": "polygon",
+        "points": "380,540 430,555 405,620 355,625 335,575",
+        "description": "Left inner white space/edge region"
+      },
+      {
+        "code": "Dd30",
+        "type": "DdS",
+        "label": "DdS30",
+        "shape": "polygon",
+        "points": "570,555 620,540 665,575 645,625 595,620",
+        "description": "Right inner white space/edge region"
+      },
+      {
+        "code": "Dd31",
+        "type": "Dd",
+        "label": "Dd31",
+        "shape": "polygon",
+        "points": "470,895 530,895 545,965 515,995 485,995 455,965",
+        "description": "Bottom central small projection"
+      },
+      {
+        "code": "Dd32",
+        "type": "DdS",
+        "label": "DdS32",
+        "shape": "polygon",
+        "points": "360,300 640,300 615,385 540,415 500,390 460,415 385,385",
+        "description": "Upper central white/negative-space area"
+      },
+      {
+        "code": "Dd33",
+        "type": "Dd",
+        "label": "Dd33",
+        "shape": "polygon",
+        "points": "740,650 790,665 800,735 760,775 720,735",
+        "description": "Lower right small outer hanging detail"
+      },
+      {
+        "code": "Dd34",
+        "type": "Dd",
+        "label": "Dd34",
+        "shape": "polygon",
+        "points": "835,445 925,490 910,545 835,555 785,520",
+        "description": "Far right outer wing tip/detail"
+      },
+      {
+        "code": "Dd35",
+        "type": "Dd",
+        "label": "Dd35",
+        "shape": "polygon",
+        "points": "170,540 240,535 285,620 260,705 185,680 140,610",
+        "description": "Lower left outer side detail"
+      }
+    ]
+  }
+}

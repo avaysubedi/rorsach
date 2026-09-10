@@ -1,0 +1,162 @@
+{
+  "VII": {
+    "image": "assets/cards/card-vii.png",
+    "viewBox": "0 0 1000 1000",
+    "spatialStatus": "starter",
+    "source": "Starter map from Figure A.7 + Card VII photo; verify before clinical use.",
+    "regions": [
+      {
+        "code": "W",
+        "type": "W",
+        "label": "Whole blot",
+        "shape": "polygon",
+        "points": "345,260 415,240 444,340 500,400 556,340 585,240 655,260 669,400 641,520 585,620 500,640 415,620 359,520 331,400",
+        "description": "Whole blot"
+      },
+      {
+        "code": "D1",
+        "type": "D",
+        "label": "D1",
+        "shape": "polygon",
+        "points": "345,240 444,240 458,400 359,420",
+        "description": "Upper-left common detail"
+      },
+      {
+        "code": "D2",
+        "type": "D",
+        "label": "D2",
+        "shape": "polygon",
+        "points": "556,240 655,240 641,420 542,400",
+        "description": "Upper-right common detail"
+      },
+      {
+        "code": "D3",
+        "type": "D",
+        "label": "D3",
+        "shape": "polygon",
+        "points": "542,380 669,380 655,540 528,520",
+        "description": "Right middle common detail"
+      },
+      {
+        "code": "D4",
+        "type": "D",
+        "label": "D4",
+        "shape": "polygon",
+        "points": "373,520 627,520 599,640 401,640",
+        "description": "Lower combined common detail"
+      },
+      {
+        "code": "D5",
+        "type": "D",
+        "label": "D5",
+        "shape": "polygon",
+        "points": "556,240 641,240 627,360 556,360",
+        "description": "Upper-right dark common detail"
+      },
+      {
+        "code": "D6",
+        "type": "D",
+        "label": "D6",
+        "shape": "polygon",
+        "points": "429,540 571,540 571,640 429,640",
+        "description": "Lower-center common detail"
+      },
+      {
+        "code": "D8",
+        "type": "D",
+        "label": "D8",
+        "shape": "polygon",
+        "points": "359,280 444,280 458,420 373,440",
+        "description": "Upper-left lighter common detail"
+      },
+      {
+        "code": "D9",
+        "type": "D",
+        "label": "D9",
+        "shape": "polygon",
+        "points": "373,360 458,360 458,480 373,480",
+        "description": "Left mid dark common detail"
+      },
+      {
+        "code": "DS7",
+        "type": "S",
+        "label": "DS7",
+        "shape": "polygon",
+        "points": "387,340 613,340 613,540 387,540",
+        "description": "Large upper/central white space"
+      },
+      {
+        "code": "DS10",
+        "type": "S",
+        "label": "DS10",
+        "shape": "polygon",
+        "points": "429,400 571,400 571,540 429,540",
+        "description": "Central white space between sides"
+      },
+      {
+        "code": "Dd21",
+        "type": "Dd",
+        "label": "Dd21",
+        "shape": "polygon",
+        "points": "316,400 359,400 359,460 316,460",
+        "description": "Far-left small unusual detail"
+      },
+      {
+        "code": "Dd22",
+        "type": "Dd",
+        "label": "Dd22",
+        "shape": "polygon",
+        "points": "387,340 444,340 444,420 387,420",
+        "description": "Left inner unusual detail"
+      },
+      {
+        "code": "Dd23",
+        "type": "Dd",
+        "label": "Dd23",
+        "shape": "polygon",
+        "points": "472,500 528,500 528,580 472,580",
+        "description": "Lower-center join unusual detail"
+      },
+      {
+        "code": "Dd24",
+        "type": "Dd",
+        "label": "Dd24",
+        "shape": "polygon",
+        "points": "556,380 613,380 613,460 556,460",
+        "description": "Right inner unusual detail"
+      },
+      {
+        "code": "Dd25",
+        "type": "Dd",
+        "label": "Dd25",
+        "shape": "polygon",
+        "points": "458,520 542,520 542,580 458,580",
+        "description": "Lower inner white-edge unusual detail"
+      },
+      {
+        "code": "Dd26",
+        "type": "Dd",
+        "label": "Dd26",
+        "shape": "polygon",
+        "points": "415,560 472,560 472,620 415,620",
+        "description": "Lower-left inner unusual detail"
+      },
+      {
+        "code": "Dd27",
+        "type": "Dd",
+        "label": "Dd27",
+        "shape": "polygon",
+        "points": "528,560 585,560 585,620 528,620",
+        "description": "Lower-right inner unusual detail"
+      },
+      {
+        "code": "Dd28",
+        "type": "Dd",
+        "label": "Dd28",
+        "shape": "polygon",
+        "points": "472,580 528,580 528,640 472,640",
+        "description": "Bottom-center unusual detail"
+      }
+    ]
+  }
+}

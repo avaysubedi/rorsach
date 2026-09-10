@@ -1,0 +1,177 @@
+{
+  "IV": {
+    "image": "assets/cards/card-iv-location.png",
+    "viewBox": "0 0 1000 1000",
+    "source": "starter map derived from uploaded Figure A.4 image; verify manually before clinical use",
+    "regions": [
+      {
+        "code": "W",
+        "type": "W",
+        "label": "Whole blot",
+        "shape": "polygon",
+        "points": "125,155 290,85 500,50 710,85 875,155 910,340 865,540 725,640 625,875 500,945 375,875 275,640 135,540 90,340",
+        "description": "Approximate whole blot boundary"
+      },
+      {
+        "code": "D1",
+        "type": "D",
+        "label": "D1",
+        "shape": "polygon",
+        "points": "430,610 570,610 610,810 555,900 445,900 390,810",
+        "description": "Approximate central lower detail"
+      },
+      {
+        "code": "D2",
+        "type": "D",
+        "label": "D2",
+        "shape": "polygon",
+        "points": "665,445 805,455 895,550 835,660 695,650 620,555",
+        "description": "Approximate right lower side detail"
+      },
+      {
+        "code": "D3",
+        "type": "D",
+        "label": "D3",
+        "shape": "polygon",
+        "points": "445,80 555,80 600,135 565,190 440,190 400,135",
+        "description": "Approximate upper central detail"
+      },
+      {
+        "code": "D4",
+        "type": "D",
+        "label": "D4",
+        "shape": "polygon",
+        "points": "250,160 315,170 335,285 295,385 250,365 220,245",
+        "description": "Approximate upper left hanging detail"
+      },
+      {
+        "code": "D5",
+        "type": "D",
+        "label": "D5",
+        "shape": "polygon",
+        "points": "465,155 535,155 565,805 520,925 480,925 435,805",
+        "description": "Approximate central vertical detail"
+      },
+      {
+        "code": "D6",
+        "type": "D",
+        "label": "D6",
+        "shape": "polygon",
+        "points": "660,430 810,450 895,545 845,650 700,650 620,555",
+        "description": "Approximate right lower side detail, alternate labeled region"
+      },
+      {
+        "code": "D7",
+        "type": "D",
+        "label": "D7",
+        "shape": "polygon",
+        "points": "120,150 300,95 500,55 700,95 880,150 900,335 860,535 720,650 590,610 560,430 500,225 440,430 410,610 280,650 140,535 100,335",
+        "description": "Approximate large common detail excluding lower central white/gray area"
+      },
+      {
+        "code": "Dd21",
+        "type": "Dd",
+        "label": "Dd21",
+        "shape": "polygon",
+        "points": "315,130 360,105 395,135 380,170 325,170",
+        "description": "Approximate small upper left edge detail"
+      },
+      {
+        "code": "Dd22",
+        "type": "Dd",
+        "label": "Dd22",
+        "shape": "polygon",
+        "points": "610,210 675,220 695,315 665,385 600,370 585,270",
+        "description": "Approximate upper right oval detail"
+      },
+      {
+        "code": "Dd23",
+        "type": "Dd",
+        "label": "Dd23",
+        "shape": "polygon",
+        "points": "790,205 835,220 845,375 815,435 775,390 760,250",
+        "description": "Approximate right upper hanging edge detail"
+      },
+      {
+        "code": "Dd24",
+        "type": "Dd",
+        "label": "Dd24",
+        "shape": "polygon",
+        "points": "410,725 475,725 495,860 460,920 400,875 380,785",
+        "description": "Approximate lower left inner detail"
+      },
+      {
+        "code": "Dd25",
+        "type": "Dd",
+        "label": "Dd25",
+        "shape": "polygon",
+        "points": "485,70 515,70 535,160 510,205 485,205 465,160",
+        "description": "Approximate narrow upper middle detail"
+      },
+      {
+        "code": "Dd26",
+        "type": "Dd",
+        "label": "Dd26",
+        "shape": "polygon",
+        "points": "505,840 570,850 595,900 555,940 505,920",
+        "description": "Approximate lower right base detail"
+      },
+      {
+        "code": "Dd27",
+        "type": "Dd",
+        "label": "Dd27",
+        "shape": "polygon",
+        "points": "610,510 650,500 675,540 650,590 610,575",
+        "description": "Approximate small inner right white/edge detail"
+      },
+      {
+        "code": "Dd28",
+        "type": "Dd",
+        "label": "Dd28",
+        "shape": "polygon",
+        "points": "420,850 490,845 505,925 455,945 405,910",
+        "description": "Approximate lower left base detail"
+      },
+      {
+        "code": "Dd29",
+        "type": "Dd",
+        "label": "Dd29",
+        "shape": "polygon",
+        "points": "390,555 450,575 460,685 410,720 360,655",
+        "description": "Approximate small inner left detail"
+      },
+      {
+        "code": "Dd30",
+        "type": "Dd",
+        "label": "Dd30",
+        "shape": "polygon",
+        "points": "470,60 530,60 545,105 510,135 465,120",
+        "description": "Approximate very top small detail"
+      },
+      {
+        "code": "Dd31",
+        "type": "Dd",
+        "label": "Dd31",
+        "shape": "polygon",
+        "points": "220,420 335,430 390,565 360,710 240,655 170,540",
+        "description": "Approximate left lower side detail"
+      },
+      {
+        "code": "Dd32",
+        "type": "Dd",
+        "label": "Dd32",
+        "shape": "polygon",
+        "points": "805,500 900,540 875,650 790,680 735,610",
+        "description": "Approximate far right lower tip/detail"
+      },
+      {
+        "code": "Dd33",
+        "type": "Dd",
+        "label": "Dd33",
+        "shape": "polygon",
+        "points": "505,230 535,330 545,900 510,945 490,945 455,900 465,330 495,230",
+        "description": "Approximate central narrow vertical detail"
+      }
+    ]
+  }
+}
