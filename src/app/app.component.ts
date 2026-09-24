@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, inject } from '@angular/core';
+import { debounceTime } from 'rxjs';
 import { AbstractControl, ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -17,9 +18,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 import {
+  AssistanceDecision,
   CardLocationRegion,
   CardOption,
   CodingOptions,
+  FqEntry,
   LocationMark,
   ProtocolMetadata,
   ReferenceStatus,
@@ -28,8 +31,10 @@ import {
   StructuralSummaryPreview
 } from './models/rorschach.models';
 import { CardLocationMapComponent } from './components/card-location-map/card-location-map.component';
+import { CodingAssistService, ScoredFqHit, ScoredPopularHit } from './services/coding-assist.service';
 import { ExportService } from './services/export.service';
 import { LocalStorageService } from './services/local-storage.service';
+import { ReferencePackService } from './services/reference-pack.service';
 
 const DEFAULT_OPTIONS: CodingOptions = {
   cards: [],
@@ -80,6 +85,8 @@ export class AppComponent implements OnInit {
   private readonly storage = inject(LocalStorageService);
   private readonly exports = inject(ExportService);
   private readonly snackBar = inject(MatSnackBar);
+  private readonly referencePack = inject(ReferencePackService);
+  private readonly assist = inject(CodingAssistService);
 
   options: CodingOptions = DEFAULT_OPTIONS;
   referenceStatus: ReferenceStatus = DEFAULT_REFERENCE_STATUS;
@@ -87,6 +94,14 @@ export class AppComponent implements OnInit {
   editingId: string | null = null;
   imageMissing = false;
   locationTypeWarning = '';
+  suggestionHits: ScoredFqHit[] = [];
+  activeHit: ScoredFqHit | null = null;
+  highlightedHitIndex = 0;
+  popularHit: ScoredPopularHit | null = null;
+  locationHintEntries: FqEntry[] = [];
+  fqDismissed = false;
+  popularDismissed = false;
+  assistanceDecisions: AssistanceDecision[] = [];
   private patchingResponse = false;
 
   readonly displayedColumns = [
@@ -142,15 +157,23 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadConfig();
+    this.referencePack.load();
     this.restoreDraftSilently();
+    this.responseForm.get('verbatimResponse')?.valueChanges.pipe(debounceTime(80)).subscribe(() => {
+      if (!this.patchingResponse) {
+        this.refreshSuggestions();
+      }
+    });
     this.responseForm.get('cardNumber')?.valueChanges.subscribe(() => {
       this.imageMissing = false;
       if (!this.patchingResponse) {
         this.clearMapSelectionFields();
+        this.refreshSuggestions();
       }
     });
     this.responseForm.get('formQuality')?.valueChanges.subscribe(() => {
       this.syncConditionalValidators();
+      this.noteFqOverride();
     });
     this.responseForm.get('confidence')?.valueChanges.subscribe(() => {
       this.syncConditionalValidators();
@@ -182,6 +205,21 @@ export class AppComponent implements OnInit {
       popularCount: this.responses.filter((response) => response.popular).length,
       byFormQuality: this.countByValue(this.responses.map((response) => response.formQuality))
     };
+  }
+
+  get packReady(): boolean {
+    return this.referencePack.loadState === 'ready';
+  }
+
+  get packCitation(): string {
+    return this.referencePack.pack?.citation ?? '';
+  }
+
+  get fqSuggestion(): ScoredFqHit | null {
+    if (this.fqDismissed) {
+      return null;
+    }
+    return this.activeHit ?? this.suggestionHits[0] ?? null;
   }
 
   get needsReferenceLookup(): boolean {
@@ -219,6 +257,10 @@ export class AppComponent implements OnInit {
       selectedLocationRegions: response.selectedLocationRegions ?? []
     });
     this.patchingResponse = false;
+    this.assistanceDecisions = response.assistance ?? [];
+    this.fqDismissed = this.assistanceDecisions.some((item) => item.dataset === 'formQuality' && item.status === 'dismissed');
+    this.popularDismissed = this.assistanceDecisions.some((item) => item.dataset === 'popular' && item.status === 'dismissed');
+    this.refreshSuggestions();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -259,6 +301,115 @@ export class AppComponent implements OnInit {
       selectedLocationRegions: []
     });
     this.locationTypeWarning = '';
+    this.clearAssistanceState();
+  }
+
+  onVerbatimKeydown(event: KeyboardEvent): void {
+    if (!this.suggestionHits.length) {
+      return;
+    }
+    if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      this.highlightedHitIndex = (this.highlightedHitIndex + 1) % this.suggestionHits.length;
+    } else if (event.key === 'ArrowUp') {
+      event.preventDefault();
+      this.highlightedHitIndex = (this.highlightedHitIndex - 1 + this.suggestionHits.length) % this.suggestionHits.length;
+    } else if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      this.chooseHit(this.suggestionHits[this.highlightedHitIndex]);
+    } else if (event.key === 'Escape') {
+      this.suggestionHits = [];
+    }
+  }
+
+  chooseHit(hit: ScoredFqHit): void {
+    this.activeHit = hit;
+    this.fqDismissed = false;
+    this.suggestionHits = [];
+    this.upsertDecision({
+      dataset: 'formQuality',
+      entryId: hit.entry.id,
+      suggestedValue: this.assist.formQualityValue(hit.entry.symbol),
+      confidence: hit.confidence,
+      source: hit.entry.citation,
+      status: 'suggested',
+      examinerValue: this.responseForm.get('formQuality')?.value ?? ''
+    });
+  }
+
+  acceptFq(): void {
+    const hit = this.fqSuggestion;
+    if (!hit) {
+      return;
+    }
+    const value = this.assist.formQualityValue(hit.entry.symbol);
+    this.responseForm.patchValue({ formQuality: value });
+    this.upsertDecision({
+      dataset: 'formQuality',
+      entryId: hit.entry.id,
+      suggestedValue: value,
+      confidence: hit.confidence,
+      source: hit.entry.citation,
+      status: 'accepted',
+      examinerValue: value
+    });
+  }
+
+  dismissFq(): void {
+    const hit = this.fqSuggestion;
+    this.fqDismissed = true;
+    if (!hit) {
+      return;
+    }
+    this.upsertDecision({
+      dataset: 'formQuality',
+      entryId: hit.entry.id,
+      suggestedValue: this.assist.formQualityValue(hit.entry.symbol),
+      confidence: hit.confidence,
+      source: hit.entry.citation,
+      status: 'dismissed',
+      examinerValue: this.responseForm.get('formQuality')?.value ?? ''
+    });
+  }
+
+  acceptPopular(): void {
+    if (!this.popularHit) {
+      return;
+    }
+    this.responseForm.patchValue({ popular: true });
+    this.upsertDecision({
+      dataset: 'popular',
+      entryId: this.popularHit.entry.id,
+      suggestedValue: 'Yes',
+      confidence: this.popularHit.confidence,
+      source: this.popularHit.source,
+      status: 'accepted',
+      examinerValue: 'Yes'
+    });
+  }
+
+  dismissPopular(): void {
+    if (!this.popularHit) {
+      return;
+    }
+    this.popularDismissed = true;
+    this.upsertDecision({
+      dataset: 'popular',
+      entryId: this.popularHit.entry.id,
+      suggestedValue: 'Yes',
+      confidence: this.popularHit.confidence,
+      source: this.popularHit.source,
+      status: 'dismissed',
+      examinerValue: this.responseForm.get('popular')?.value ? 'Yes' : 'No'
+    });
+  }
+
+  assistFormQuality(hit: ScoredFqHit): string {
+    return this.assist.formQualityValue(hit.entry.symbol);
+  }
+
+  citationLine(citation: { tableId: string; card: string; page?: string }): string {
+    return `Table ${citation.tableId} · Card ${citation.card}${citation.page ? ' · p. ' + citation.page : ''}`;
   }
 
   onLocationSelectionChange(codes: string[]): void {
@@ -279,6 +430,7 @@ export class AppComponent implements OnInit {
       selectedLocationRegions: regions
     });
     this.applyLocationAutoFill(regions);
+    this.refreshSuggestions();
   }
 
   onRegionClicked(region: CardLocationRegion): void {
@@ -373,6 +525,69 @@ export class AppComponent implements OnInit {
       .sort((a, b) => a.key.localeCompare(b.key));
   }
 
+  private refreshSuggestions(): void {
+    const pack = this.referencePack.pack;
+    const card = this.responseForm.get('cardNumber')?.value ?? '';
+    const query = this.responseForm.get('verbatimResponse')?.value ?? '';
+    const codes = this.selectedLocationCodes;
+    const entries = pack?.datasets.formQuality ?? [];
+    const populars = pack?.datasets.populars ?? [];
+    this.suggestionHits = this.assist.searchFormQuality(entries, card, query, codes);
+    this.highlightedHitIndex = 0;
+    if (this.activeHit && !entries.some((entry) => entry.id === this.activeHit?.entry.id)) {
+      this.activeHit = null;
+    }
+    this.popularHit = this.popularDismissed ? null : this.assist.matchPopular(populars, card, query, codes);
+    this.locationHintEntries = this.assist.locationHints(entries, card, codes);
+    if (!this.fqDismissed && this.fqSuggestion) {
+      const hit = this.fqSuggestion;
+      const existing = this.assistanceDecisions.find((item) => item.dataset === 'formQuality' && item.entryId === hit.entry.id);
+      if (!existing || existing.status === 'suggested') {
+        this.upsertDecision({
+          dataset: 'formQuality',
+          entryId: hit.entry.id,
+          suggestedValue: this.assist.formQualityValue(hit.entry.symbol),
+          confidence: hit.confidence,
+          source: hit.entry.citation,
+          status: 'suggested',
+          examinerValue: this.responseForm.get('formQuality')?.value ?? ''
+        });
+      }
+    }
+  }
+
+  private noteFqOverride(): void {
+    const accepted = this.assistanceDecisions.find((item) => item.dataset === 'formQuality' && item.status === 'accepted');
+    if (!accepted) {
+      return;
+    }
+    const current = this.responseForm.get('formQuality')?.value ?? '';
+    if (current && current !== accepted.suggestedValue) {
+      accepted.status = 'overridden';
+      accepted.examinerValue = current;
+    }
+  }
+
+  private upsertDecision(decision: AssistanceDecision): void {
+    const index = this.assistanceDecisions.findIndex((item) => item.dataset === decision.dataset && item.entryId === decision.entryId);
+    if (index >= 0) {
+      this.assistanceDecisions[index] = decision;
+      return;
+    }
+    this.assistanceDecisions = [...this.assistanceDecisions, decision];
+  }
+
+  private clearAssistanceState(): void {
+    this.suggestionHits = [];
+    this.activeHit = null;
+    this.highlightedHitIndex = 0;
+    this.popularHit = null;
+    this.locationHintEntries = [];
+    this.fqDismissed = false;
+    this.popularDismissed = false;
+    this.assistanceDecisions = [];
+  }
+
   private loadConfig(): void {
     this.http.get<CodingOptions>('assets/data/coding-options.json').subscribe({
       next: (options) => {
@@ -421,7 +636,8 @@ export class AppComponent implements OnInit {
       contentCodes: raw.contentCodes ?? [],
       specialScores: raw.specialScores ?? [],
       selectedLocationCodes: raw.selectedLocationCodes ?? [],
-      selectedLocationRegions: raw.selectedLocationRegions ?? []
+      selectedLocationRegions: raw.selectedLocationRegions ?? [],
+      assistance: this.assistanceDecisions
     } as RorschachResponse;
   }
 

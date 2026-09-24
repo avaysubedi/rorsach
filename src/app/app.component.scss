@@ -67,6 +67,55 @@ mat-card {
   color: #9a6700;
 }
 
+.suggest-list {
+  display: grid;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.suggest-option {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2px 8px;
+  text-align: left;
+  padding: 8px 10px;
+  border: 1px solid #c5cdd8;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #172033;
+  cursor: pointer;
+}
+
+.suggest-option small {
+  grid-column: 1 / -1;
+  color: #536074;
+}
+
+.suggest-option.is-active {
+  border-color: #1976d2;
+  background: #e8f1fb;
+}
+
+.assist-block {
+  display: grid;
+  gap: 6px;
+  padding: 12px;
+  border: 1px solid #90b4e0;
+  border-radius: 8px;
+  background: #f3f8fd;
+  color: #172033;
+}
+
+.assist-block p,
+.assist-block span {
+  margin: 0;
+}
+
+.assist-actions {
+  display: flex;
+  gap: 8px;
+}
+
 .checkbox-field {
   min-height: 56px;
   display: flex;

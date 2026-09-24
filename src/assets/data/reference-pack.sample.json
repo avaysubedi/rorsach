@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "id": "local-sample",
+  "edition": "sample-not-for-clinical-use",
+  "citation": "Local sample pack. Not an official form-quality table.",
+  "datasets": {
+    "formQuality": [
+      {
+        "id": "sample-i-w-winged",
+        "card": "I",
+        "locationCode": "W",
+        "locationType": "W",
+        "label": "Winged shape",
+        "qualifier": "sample only",
+        "symbol": "o",
+        "aliases": ["butterfly", "bat"],
+        "citation": { "tableId": "sample", "card": "I", "page": "n/a" }
+      },
+      {
+        "id": "sample-i-w-creature",
+        "card": "I",
+        "locationCode": "W",
+        "locationType": "W",
+        "label": "Mythic creature",
+        "qualifier": "sample only",
+        "symbol": "u",
+        "aliases": ["dragon"],
+        "citation": { "tableId": "sample", "card": "I", "page": "n/a" }
+      },
+      {
+        "id": "sample-iv-w-animal",
+        "card": "IV",
+        "locationCode": "W",
+        "locationType": "W",
+        "label": "Large animal",
+        "qualifier": "sample only",
+        "symbol": "o",
+        "aliases": ["bear"],
+        "citation": { "tableId": "sample", "card": "IV", "page": "n/a" }
+      }
+    ],
+    "populars": [
+      {
+        "id": "sample-i-popular-winged",
+        "card": "I",
+        "locationCode": "W",
+        "statement": "Sample rule only: a winged whole-blot shape on Card I is marked Popular in this local pack.",
+        "matchLabels": ["Winged shape", "butterfly", "bat"],
+        "citation": { "tableId": "sample", "card": "I", "page": "n/a" }
+      }
+    ]
+  }
+}

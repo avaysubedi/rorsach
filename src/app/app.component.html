@@ -21,6 +21,9 @@
     <div>
       <strong>Reference data required. Manual examiner judgment needed.</strong>
       This prototype stores entered coding only. It does not auto-code Location Number, Form Quality, Popular, GHR/PHR, special scores, or clinical interpretation.
+      @if (packReady) {
+        Suggestions cite a reference pack. They are not applied until you accept them.
+      }
     </div>
   </section>
 
@@ -93,9 +96,27 @@
 
             <mat-form-field appearance="outline" class="span-2">
               <mat-label>Verbatim Response</mat-label>
-              <textarea matInput rows="3" formControlName="verbatimResponse"></textarea>
+              <textarea matInput rows="3" formControlName="verbatimResponse" (keydown)="onVerbatimKeydown($event)"></textarea>
               @if (hasError('verbatimResponse', 'required')) {
                 <mat-error>Verbatim Response is required.</mat-error>
+              }
+              @if (packReady && suggestionHits.length) {
+                <div class="suggest-list" role="listbox" aria-label="Response suggestions">
+                  @for (hit of suggestionHits; track hit.entry.id; let index = $index) {
+                    <button
+                      type="button"
+                      class="suggest-option"
+                      role="option"
+                      [class.is-active]="index === highlightedHitIndex"
+                      (click)="chooseHit(hit)">
+                      <span>{{ hit.entry.label }}</span>
+                      <strong>{{ hit.confidence }}</strong>
+                      <small>Card {{ hit.entry.card }} · {{ hit.entry.locationCode }} · {{ assistFormQuality(hit) }}</small>
+                    </button>
+                  }
+                </div>
+              } @else if (packReady && responseForm.get('cardNumber')?.value && (responseForm.get('verbatimResponse')?.value || '').length >= 2 && !suggestionHits.length) {
+                <mat-hint>No catalog rows matched this text for the selected card.</mat-hint>
               }
             </mat-form-field>
 
@@ -177,6 +198,21 @@
               <mat-hint>Official Exner reference lookup required.</mat-hint>
             </mat-form-field>
 
+            @if (fqSuggestion) {
+              <div class="assist-block span-2">
+                <div>
+                  <strong>Suggested {{ assistFormQuality(fqSuggestion) }}</strong>
+                  <span>Confidence {{ fqSuggestion.confidence }}</span>
+                </div>
+                <p>{{ fqSuggestion.entry.label }} at {{ fqSuggestion.entry.locationCode }}. {{ packCitation }}</p>
+                <p>{{ citationLine(fqSuggestion.entry.citation) }}</p>
+                <div class="assist-actions">
+                  <button mat-stroked-button type="button" (click)="acceptFq()">Accept</button>
+                  <button mat-stroked-button type="button" (click)="dismissFq()">Dismiss</button>
+                </div>
+              </div>
+            }
+
             <mat-form-field appearance="outline">
               <mat-label>FQ Explanation</mat-label>
               <input matInput formControlName="formQualityExplanation">
@@ -198,6 +234,20 @@
               <mat-checkbox formControlName="popular">Popular</mat-checkbox>
               <span>Official Exner reference lookup required.</span>
             </div>
+            @if (popularHit && !popularDismissed) {
+              <div class="assist-block span-2">
+                <div>
+                  <strong>Suggested Popular = Yes</strong>
+                  <span>Confidence {{ popularHit.confidence }}</span>
+                </div>
+                <p>{{ popularHit.entry.statement }}</p>
+                <p>{{ citationLine(popularHit.source) }}</p>
+                <div class="assist-actions">
+                  <button mat-stroked-button type="button" (click)="acceptPopular()">Accept</button>
+                  <button mat-stroked-button type="button" (click)="dismissPopular()">Dismiss</button>
+                </div>
+              </div>
+            }
 
             <mat-form-field appearance="outline" class="span-2">
               <mat-label>Special Scores</mat-label>
@@ -271,6 +321,16 @@
             <div class="inline-warning">
               <mat-icon>warning</mat-icon>
               <span>{{ locationTypeWarning }}</span>
+            </div>
+          }
+
+          @if (locationHintEntries.length) {
+            <div class="assist-block">
+              <strong>Catalog rows for this selection</strong>
+              <p>Location filter uses unverified map geometry. These hints do not change Location.</p>
+              @for (entry of locationHintEntries; track entry.id) {
+                <span>{{ entry.locationCode }} · {{ entry.label }} · {{ assistFormQuality({ entry, confidence: 0 }) }}</span>
+              }
             </div>
           }
 

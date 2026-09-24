@@ -91,11 +91,87 @@ export interface RorschachResponse {
   missingInformation: string;
   selectedLocationCodes?: string[];
   selectedLocationRegions?: CardLocationRegion[];
+  assistance?: AssistanceDecision[];
 }
 
 export interface SavedProtocol {
   metadata: ProtocolMetadata;
   responses: RorschachResponse[];
+}
+
+export type FqSymbol = '+' | 'o' | 'u' | '-';
+
+export interface ReferenceCitation {
+  tableId: string;
+  card: string;
+  page?: string;
+}
+
+export interface FqEntry {
+  id: string;
+  card: string;
+  locationCode: string;
+  locationType: LocationRegionType;
+  label: string;
+  qualifier?: string;
+  symbol: FqSymbol;
+  aliases?: string[];
+  citation: ReferenceCitation;
+}
+
+export interface PopularEntry {
+  id: string;
+  card: string;
+  locationCode?: string;
+  statement: string;
+  matchLabels: string[];
+  citation: ReferenceCitation;
+}
+
+export interface ZEntry {
+  id: string;
+  card: string;
+  w: number;
+  adjacent: number;
+  distant: number;
+  space: number;
+  citation: ReferenceCitation;
+}
+
+export interface RuleEntry {
+  id: string;
+  card?: string;
+  locationCode?: string;
+  label: string;
+  suggestedCode: string;
+  rationale: string;
+  citation: ReferenceCitation;
+}
+
+export interface ReferencePack {
+  schemaVersion: 1;
+  id: string;
+  edition: string;
+  citation: string;
+  datasets: {
+    formQuality?: FqEntry[];
+    populars?: PopularEntry[];
+    zValues?: ZEntry[];
+    specialScores?: RuleEntry[];
+    content?: RuleEntry[];
+    humanMovement?: RuleEntry[];
+    animalMovement?: RuleEntry[];
+  };
+}
+
+export interface AssistanceDecision {
+  dataset: 'formQuality' | 'popular' | 'locationHint';
+  entryId: string;
+  suggestedValue: string;
+  confidence: number;
+  source: ReferenceCitation;
+  status: 'suggested' | 'accepted' | 'dismissed' | 'overridden';
+  examinerValue: string;
 }
 
 export interface StructuralSummaryPreview {

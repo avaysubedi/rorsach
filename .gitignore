@@ -13,4 +13,5 @@ books/appendix-a-*.png
 books/*.pdf
 pdf2png/
 pdf2png.zip
+src/assets/data/reference-pack.json
 

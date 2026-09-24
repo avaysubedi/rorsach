@@ -1,4 +1,4 @@
-<div class="map-shell">
+<div class="map-shell" [class.is-fullscreen]="fullscreen">
   <div class="map-controls">
     <button mat-stroked-button type="button" (click)="selectWholeBlot()" [disabled]="!paletteRegions.length">
       <mat-icon>select_all</mat-icon>
@@ -11,9 +11,32 @@
     <mat-slide-toggle [checked]="showLabels" (change)="showLabels = $event.checked" [disabled]="!hasSpatialMap">
       Show Labels
     </mat-slide-toggle>
+    @if (!fullscreen) {
+      <button mat-stroked-button type="button" (click)="openFullscreen()">
+        <mat-icon>fullscreen</mat-icon>
+        Expand
+      </button>
+    } @else {
+      <button mat-stroked-button type="button" (click)="zoomBy(-0.2)" [disabled]="scale <= 1">−</button>
+      <button mat-stroked-button type="button" (click)="resetView()">{{ scale * 100 | number:'1.0-0' }}%</button>
+      <button mat-stroked-button type="button" (click)="zoomBy(0.2)" [disabled]="scale >= 4">+</button>
+      <button mat-stroked-button type="button" (click)="closeFullscreen()">
+        <mat-icon>fullscreen_exit</mat-icon>
+        Close
+      </button>
+    }
   </div>
 
-  <div class="map-stage" [class.is-empty]="!cardMap" [class.catalog-only]="cardMap && !hasSpatialMap">
+  <div
+    class="map-stage"
+    [class.is-empty]="!cardMap"
+    [class.catalog-only]="cardMap && !hasSpatialMap"
+    (wheel)="onStageWheel($event)"
+    (pointerdown)="onStagePointerDown($event)"
+    (pointermove)="onStagePointerMove($event)"
+    (pointerup)="onStagePointerUp()"
+    (pointercancel)="onStagePointerUp()">
+    <div class="map-transform" [style.transform]="'translate(' + panX + 'px, ' + panY + 'px) scale(' + scale + ')'">
     @if (cardMap && !imageMissing) {
       <img class="card-image" [src]="cardMap.image" [alt]="'Card ' + cardNumber" (error)="imageMissing = true">
     }
@@ -49,7 +72,7 @@
               [attr.points]="region.points"
               (mouseenter)="hoveredCode = region.code"
               (mouseleave)="hoveredCode = null"
-              (click)="toggleRegion(region)">
+              (click)="onRegionClick(region)">
               <title>{{ region.code }} - {{ region.description || region.label }}</title>
             </polygon>
           }
@@ -67,6 +90,7 @@
         }
       </svg>
     }
+    </div>
   </div>
 
   @if (paletteGroups.length) {

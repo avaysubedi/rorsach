@@ -19,3 +19,12 @@ input,
 textarea {
   font-family: inherit;
 }
+
+body.map-is-fullscreen .viewer-column {
+  position: static;
+  z-index: auto;
+}
+
+body.map-is-fullscreen .app-toolbar {
+  z-index: 1;
+}

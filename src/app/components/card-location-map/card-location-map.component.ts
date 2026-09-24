@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, inject } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, SimpleChanges, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -54,6 +54,12 @@ export class CardLocationMapComponent implements OnInit, OnChanges {
   showLabels = false;
   imageMissing = false;
   loadFailed = false;
+  fullscreen = false;
+  scale = 1;
+  panX = 0;
+  panY = 0;
+  private pointerStart: { x: number; y: number; panX: number; panY: number } | null = null;
+  private pointerMoved = false;
 
   get selectedCodeList(): string[] {
     return [...this.selectedCodes];
@@ -156,6 +162,77 @@ export class CardLocationMapComponent implements OnInit, OnChanges {
     this.emitSelection();
   }
 
+  openFullscreen(): void {
+    this.fullscreen = true;
+    document.body.classList.add('map-is-fullscreen');
+  }
+
+  closeFullscreen(): void {
+    this.fullscreen = false;
+    document.body.classList.remove('map-is-fullscreen');
+    this.resetView();
+  }
+
+  zoomBy(delta: number): void {
+    this.scale = this.clampScale(this.scale + delta);
+  }
+
+  resetView(): void {
+    this.scale = 1;
+    this.panX = 0;
+    this.panY = 0;
+  }
+
+  onStageWheel(event: WheelEvent): void {
+    if (!this.fullscreen) {
+      return;
+    }
+    event.preventDefault();
+    this.zoomBy(event.deltaY < 0 ? 0.2 : -0.2);
+  }
+
+  onStagePointerDown(event: PointerEvent): void {
+    if (!this.fullscreen || event.button !== 0) {
+      return;
+    }
+    const stage = event.currentTarget as HTMLElement;
+    this.pointerMoved = false;
+    this.pointerStart = { x: event.clientX, y: event.clientY, panX: this.panX, panY: this.panY };
+    stage.setPointerCapture(event.pointerId);
+  }
+
+  onStagePointerMove(event: PointerEvent): void {
+    if (!this.pointerStart) {
+      return;
+    }
+    const dx = event.clientX - this.pointerStart.x;
+    const dy = event.clientY - this.pointerStart.y;
+    if (Math.hypot(dx, dy) > 6) {
+      this.pointerMoved = true;
+      this.panX = this.pointerStart.panX + dx;
+      this.panY = this.pointerStart.panY + dy;
+    }
+  }
+
+  onStagePointerUp(): void {
+    this.pointerStart = null;
+  }
+
+  onRegionClick(region: CardLocationRegion): void {
+    if (this.pointerMoved) {
+      this.pointerMoved = false;
+      return;
+    }
+    this.toggleRegion(region);
+  }
+
+  @HostListener('document:keydown.escape')
+  onEscape(): void {
+    if (this.fullscreen) {
+      this.closeFullscreen();
+    }
+  }
+
   toggleRegion(region: CardLocationRegion): void {
     if (this.selectedCodes.has(region.code)) {
       this.selectedCodes.delete(region.code);
@@ -189,6 +266,10 @@ export class CardLocationMapComponent implements OnInit, OnChanges {
       x: (Math.min(...xs) + Math.max(...xs)) / 2,
       y: (Math.min(...ys) + Math.max(...ys)) / 2
     };
+  }
+
+  private clampScale(value: number): number {
+    return Math.min(4, Math.max(1, Math.round(value * 10) / 10));
   }
 
   private setActiveMap(): void {
